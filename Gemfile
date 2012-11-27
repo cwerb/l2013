@@ -4,6 +4,7 @@ gem 'rails', '3.2.1'
 
 #db
 gem 'pg'
+gem 'sqlite3'
 
 #parser
 gem 'instagram'
@@ -33,7 +34,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-rails'
 
