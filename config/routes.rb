@@ -1,5 +1,5 @@
 L2013::Application.routes.draw do
-  match "ic", to: 'instagram#callback', via: [:post :get]
+  match "ic", to: 'instagram#callback', via: [:post, :get]
 
   root to: 'frontend#index'
 
