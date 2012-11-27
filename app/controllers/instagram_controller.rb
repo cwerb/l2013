@@ -1,11 +1,11 @@
 class InstagramController < ApplicationController
   def callback
-    if params['hub.challenge']
+    if params.has_key? 'hub.challenge'
       render text: params['hub.challenge']
-    elsif params[:_json]
-      Instagram.process_subscription params[:_json] do |handler|
+    else
+      Instagram.process_subscription params[:body] do |handler|
         handler.on_tag_changed do |tag_id, data|
-          raise [tag_id, data]
+          puts [tag_id, data]
         end
       end
     end
