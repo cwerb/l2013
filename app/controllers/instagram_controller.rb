@@ -8,10 +8,10 @@ class InstagramController < ApplicationController
          media = Instagram.tag_recent_media tag.tag, max_id: params['_json'].first['time'], min_id: Image.last_instagram_id
          media.data.each do |m|
            tag.images.create(
-               image_link: images.standard_resolution.url,
-               post_url: link,
-               provider: 'facebook',
-               service_id: created_time.to_i
+               image_link: m.images.standard_resolution.url,
+               post_url: m.link,
+               provider: 'instagram',
+               service_id: m.created_time.to_i
            )
          end
     end
