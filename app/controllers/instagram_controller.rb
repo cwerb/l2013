@@ -1,10 +1,11 @@
 class InstagramController < ApplicationController
   def callback
+    puts params
     if params.has_key? 'hub.challenge'
       render text: params['hub.challenge']
     elsif params.has_key? '_json'
          tag = Hashtag.active
-         media = Instagram.tag_recent_media tag.tag, min_id: Image.last_instagram_id
+         media = Instagram.tag_recent_media tag.tag, max_id: params['_json'].first['time'], min_id: Image.last_instagram_id
          media.data.each do |m|
            tag.images.create(
                image_link: images.standard_resolution.url,
