@@ -10,7 +10,7 @@ common: &common
   password:
   database: rails-lipton
 
-sqlite:
+sqlite: &sqlite
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5

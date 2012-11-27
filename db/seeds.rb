@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-hashtags = Hashtag.create([{tag: 'imagetest', start_time: Time.now, end_time: 5.days.from_now}])
+hashtags = Hashtag.create([{tag: 'imagetest', start_time: Time.now}])
