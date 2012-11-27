@@ -1,0 +1,57 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.1'
+
+#db
+gem 'pg'
+
+#parser
+gem 'instagram'
+gem 'tweetstream'
+
+#authorisation
+gem 'omniauth'
+gem 'omniauth-instagram'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+
+#various stuff
+gem 'pacecar'
+gem 'activeadmin'
+
+#server
+group :production do
+  gem 'passenger'
+end
+
+group :development do
+  gem 'thin'
+end
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'bootstrap-rails'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', platform: :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'webrat'
+  gem 'capybara'
+  gem 'spork', '1.0.0rc3'
+  gem 'factory_girl_rails'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
