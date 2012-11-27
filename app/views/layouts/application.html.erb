@@ -7,8 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+
+    <a class="brand" href="/">Lipton Insta 2013</a>
+        <ul class="nav">
+          <% if @user -%>
+              <li><%= @user.name -%>
+              <%= link_to 'выйти', action: :login, controller: :frontend -%>
+              </li>
+          <%- else -%>
+              <li <%= %(class=active) if params[:action] == 'login' -%>><%= link_to 'логин', action: :login, controller: :frontend -%></li>
+          <%- end -%>
+          <li <%= %(class=active) if params[:action] == 'rating' -%>><%= link_to 'топ', action: :rating, controller: :frontend -%></li>
+          <li <%= %(class=active) if params[:action] == 'rules' -%>><%= link_to 'правила', action: :rules, controller: :frontend -%></li>
+        </ul>
+
+  </div>
+</div>
+<div class="wrapper">
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>

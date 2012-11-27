@@ -1,2 +1,3 @@
-<h1>Frontend#login</h1>
-<p>Find me in app/views/frontend/login.html.erb</p>
+<%- %w(twitter instagram vkontakte).each do |pr| -%>
+    <p><%= link_to %(Войти через #{pr}), %(/auth/#{pr}) -%></p>
+<%- end -%>

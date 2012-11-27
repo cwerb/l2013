@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 Twitter.configure do |config|
   config.consumer_key = "HHPM3KuA3Q3G7W5s9qTOLw"

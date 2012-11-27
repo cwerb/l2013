@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitter, "HHPM3KuA3Q3G7W5s9qTOLw", "HBUJxOUo7YLlfskUPDJQnJZeFrJCjDLDqhhGVCBJs"
   provider :vkontakte, '3262323', 'AY7hQR0yVAilBqgRezbv', :scope => 'notify'

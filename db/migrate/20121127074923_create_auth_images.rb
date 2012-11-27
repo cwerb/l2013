@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAuthImages < ActiveRecord::Migration
   def change
     create_table :auth_images do |t|

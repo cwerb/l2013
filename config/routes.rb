@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 L2013::Application.routes.draw do
   get 'instagram/callback'
   post 'instagram/callback'
@@ -12,7 +13,7 @@ L2013::Application.routes.draw do
 
   match "auth/:provider/callback", to:'frontend#callback'
 
-  match "you're close", to: 'frontend#final_stage'
+  match "soooclose", to: 'frontend#final_stage', via: [:post, :get]
 
   ActiveAdmin.routes(self)
 

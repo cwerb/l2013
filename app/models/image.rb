@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Image < ActiveRecord::Base
   attr_accessible :image_link, :likes_count, :created_at, :provider, :service_id, :hashtag, :post_url
   belongs_to :hashtag

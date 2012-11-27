@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddUidAndNameToAuth < ActiveRecord::Migration
   def change
     add_column :auths, :uid, :string

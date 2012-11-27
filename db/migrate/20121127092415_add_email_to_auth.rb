@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddEmailToAuth < ActiveRecord::Migration
   def change
     add_column :auths, :email, :string
