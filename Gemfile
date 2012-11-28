@@ -21,6 +21,11 @@ gem 'activeadmin'
 
 #server
 gem 'thin'
+group :production do
+  gem 'passenger'
+  gem 'activerecord-mysql2-adapter'
+  gem 'mysql2', platform: :ruby
+end
 
 group :development, :test do
   gem 'pg'
