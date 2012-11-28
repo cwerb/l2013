@@ -13,6 +13,8 @@ L2013::Application.routes.draw do
 
   match "login", to: 'frontend#login'
 
+  match "auth/failure", to: 'frontend#failure'
+
   match "auth/:provider/callback", to:'frontend#callback'
 
   match "soooclose", to: 'frontend#final_stage', via: [:post, :get]
@@ -20,6 +22,8 @@ L2013::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  match '*path' => redirect('/') unless Rails.env.development?
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

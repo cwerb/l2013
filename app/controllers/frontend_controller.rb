@@ -45,6 +45,10 @@ class FrontendController < ApplicationController
     render nothing: true
   end
 
+  def failure
+
+  end
+
   protected
   def authorise
      @user = Auth.find(session[:auth_id]) if session[:auth_id]
