@@ -22,7 +22,6 @@ gem 'activeadmin'
 gem 'thin'
 group :production do
   gem 'passenger'
-  gem 'mysql2', platform: :ruby
 end
 
 group :development, :test do
