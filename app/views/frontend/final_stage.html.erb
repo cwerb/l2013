@@ -1,5 +1,8 @@
-Welcome. Please enter your email
-<%= form_for :user do |f| -%>
-<%= f.text_field :email -%>
-<%= f.submit -%>
+<%= form_for @user, as: :post, url:{action: :final_stage}, html: {class: 'form-horizontal'} do |f| -%>
+    <div class="control-group">
+    <%= f.text_field :email, placeholder: 'email' -%>
+    </div>
+    <div class="control-group">
+    <%= f.submit 'зарегистрироваться', class: 'btn' -%>
+    </div>
 <%- end -%>

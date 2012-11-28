@@ -13,7 +13,6 @@ gem 'omniauth'
 gem 'omniauth-instagram'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'omniauth-vkontakte'
 
 #various stuff
 gem 'pacecar'
@@ -23,7 +22,6 @@ gem 'activeadmin'
 gem 'thin'
 group :production do
   gem 'passenger'
-  gem 'activerecord-mysql2-adapter'
   gem 'mysql2', platform: :ruby
 end
 
