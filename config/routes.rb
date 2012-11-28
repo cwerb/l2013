@@ -5,6 +5,8 @@ L2013::Application.routes.draw do
 
   root to: 'frontend#index'
 
+  match "nothing-here", to: 'frontend#blank'
+
   match "top", to: 'frontend#rating'
 
   match "obey", to: 'frontend#rules'

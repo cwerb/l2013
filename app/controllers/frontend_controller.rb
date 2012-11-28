@@ -5,9 +5,7 @@ class FrontendController < ApplicationController
   before_filter :get_tag, only: [:index, :rating]
 
   def index
-    begin
     @images = @tag.images.page(params[:page])
-    end
   end
 
   def rating
@@ -42,6 +40,10 @@ class FrontendController < ApplicationController
     end
   end
 
+  def blank
+    render nothing: true
+  end
+
   protected
   def authorise
      @user = Auth.find(session[:auth_id]) if session[:auth_id]
@@ -50,6 +52,7 @@ class FrontendController < ApplicationController
 
   def get_tag
     @tag = Hashtag.active
+    redirect_to action: 'blank'  if @tag.nil?
   end
 
   def drop
