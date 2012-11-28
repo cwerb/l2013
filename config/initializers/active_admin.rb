@@ -147,4 +147,16 @@ ActiveAdmin.setup do |config|
   #
   # Set the CSV builder separator (default is ",")
   # config.csv_column_separator = ','
+  module ActiveAdmin
+    module Views
+      module Pages
+        class Base < Arbre::HTML::Document
+
+          def build_footer
+          end
+
+        end
+      end
+    end
+  end
 end
