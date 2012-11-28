@@ -5,7 +5,9 @@ class FrontendController < ApplicationController
   before_filter :get_tag, only: [:index, :rating]
 
   def index
+    begin
     @images = @tag.images.page(params[:page])
+    end
   end
 
   def rating
