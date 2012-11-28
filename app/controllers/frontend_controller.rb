@@ -41,6 +41,7 @@ class FrontendController < ApplicationController
   end
 
   def blank
+    redirect_to action: :index unless @tag.nil?
     render nothing: true
   end
 
