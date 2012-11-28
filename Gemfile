@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 
 #db
-gem 'pg'
-gem 'sqlite3'
 
 #parser
 gem 'instagram'
@@ -22,12 +20,14 @@ gem 'pacecar'
 gem 'activeadmin'
 
 #server
+gem 'thin'
 group :production do
   gem 'passenger'
+  gem 'mysql2'
 end
 
-group :development do
-  gem 'thin'
+group :development, :test do
+  gem 'pg'
 end
 
 

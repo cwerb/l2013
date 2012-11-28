@@ -21,16 +21,14 @@ class FrontendController < ApplicationController
   def callback
     user = Auth.where(provider: env['omniauth.auth'].provider ).find_by_uid env['omniauth.auth'].uid
     if user.nil?
-      user = Auth.new(
+      user = Auth.create(
           provider: env['omniauth.auth'].provider,
           uid: env['omniauth.auth'].uid,
           name: env['omniauth.auth'].info.name,
           data: env['omniauth.auth'].info.to_s
       )
     end
-    user.session = Digest::MD5.hexdigest user.uid + Time.now.to_s
-    session[:access] = user.session
-    user.save
+    session[:auth_id] = user.id
     redirect_to action: :index
   end
 
@@ -44,8 +42,8 @@ class FrontendController < ApplicationController
 
   protected
   def authorise
-     @user = Auth.find_by_session(session[:access]) if session[:access] && Auth.find_by_session(session[:access])
-     redirect_to(action: 'final_stage') if params[:action] != 'final_stage' && @user && @user.email.blank?
+     @user = Auth.find(session[:auth_id]) if session[:auth_id]
+     redirect_to(action: 'final_stage') if params[:action] != 'final_stage' && !@user.nil? && @user.email.blank?
   end
 
   def get_tag
@@ -53,6 +51,6 @@ class FrontendController < ApplicationController
   end
 
   def drop
-    session[:access] = nil
+    session[:auth_id] = nil
   end
 end
