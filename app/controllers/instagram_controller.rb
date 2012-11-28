@@ -7,7 +7,7 @@ class InstagramController < ApplicationController
       tag = Hashtag.active
       media = Instagram.tag_recent_media tag.tag, min_id: Image.last_instagram_id
       media.data.each do |m|
-        tag.images << Image.create(
+        tag.images.create(
             image_link: m.images.standard_resolution.url,
             post_url: m.link,
             author_id: m.user.id,

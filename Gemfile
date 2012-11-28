@@ -23,7 +23,8 @@ gem 'activeadmin'
 gem 'thin'
 group :production do
   gem 'passenger'
-  gem 'mysql2'
+  gem 'mysql2', platform: :ruby
+  gem 'activerecord-mysql2-adapter'
 end
 
 group :development, :test do

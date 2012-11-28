@@ -27,3 +27,4 @@ production:
   username: root
   password: root
   host: localhost
+  reconnect: true
