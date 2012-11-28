@@ -25,7 +25,7 @@ class FrontendController < ApplicationController
           provider: env['omniauth.auth'].provider,
           uid: env['omniauth.auth'].uid,
           name: env['omniauth.auth'].info.name,
-          data: env['omniauth.auth'].info.to_s,
+          data: env['omniauth.auth'].info.to_s
       )
     end
     user.session = Digest::MD5.hexdigest user.uid + Time.now.to_s
