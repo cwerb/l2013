@@ -6,6 +6,8 @@ class Auth < ActiveRecord::Base
   scope :twi, where(provider: "twitter")
   scope :fb, where(provider: "facebook")
   scope :ig, where(provider: "instagram")
+  validates_uniqueness_of :uid, scope: :provider
+  validates_uniqueness_of :url, scope: :provider
   validates :accepted_deal, acceptance: true, unless: Proc.new {email.blank?}
   validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
 end

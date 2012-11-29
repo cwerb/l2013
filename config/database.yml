@@ -19,6 +19,4 @@ test:
 
 production:
   <<: *common
-  username: postgres
-  password: postgres
   database: rails-lipton-production
