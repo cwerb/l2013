@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '>= 3.2.7'
 
-gem 'daemons'
 
 #parser
 gem 'instagram'
 gem 'tweetstream'
+gem 'daemons'
 
 #authorisation
 gem 'omniauth'
@@ -22,7 +22,7 @@ gem 'activeadmin'
 gem 'thin'
 group :production do
   gem 'passenger'
-  gem 'sqlite3'
+  gem 'mysql2'
 end
 
 group :development, :test do
