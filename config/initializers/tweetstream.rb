@@ -1,7 +1,3 @@
-require 'daemons'
-require File.expand_path('../../config/environment', __FILE__)
-require 'tweetstream'
-
 TweetStream.configure do |config|
   config.consumer_key = "HHPM3KuA3Q3G7W5s9qTOLw"
   config.consumer_secret = "HBUJxOUo7YLlfskUPDJQnJZeFrJCjDLDqhhGVCBJs"
@@ -12,7 +8,7 @@ end
 
 Daemons.run_proc('tweetstream', multiple: false, monitor: true, ontop: true) do
 
-tag = Hashtag.active
+  tag = Hashtag.active
   TweetStream::Client.new.track '#'+tag.tag do |status|
     status.media.each do |photo|
       tag.images.create(
