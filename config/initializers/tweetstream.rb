@@ -6,7 +6,7 @@ TweetStream.configure do |config|
 end
 
 
-Daemons.run_proc('tweetstream', multiple: false, monitor: true, ontop: true) do
+Daemons.call('tweetstream', multiple: false, monitor: true, ontop: true) do
 
   tag = Hashtag.active
   TweetStream::Client.new.track '#'+tag.tag do |status|
