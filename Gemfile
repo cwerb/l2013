@@ -22,12 +22,9 @@ gem 'activeadmin'
 gem 'thin'
 group :production do
   gem 'passenger'
-  gem 'mysql2'
 end
 
-group :development, :test do
-  gem 'pg'
-end
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -41,14 +38,6 @@ group :assets do
   gem 'therubyracer', platform: :ruby
 
   gem 'uglifier', '>= 1.0.3'
-end
-
-group :test do
-  gem 'rspec-rails'
-  gem 'webrat'
-  gem 'capybara'
-  gem 'spork', '>=1.0.0rc3'
-  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'
