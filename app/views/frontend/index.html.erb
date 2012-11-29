@@ -1,5 +1,18 @@
+<h2>
+  Хэштег сейчас: #<%= @tag.tag -%>
+</h2>
 <% @images.each do |post| -%>
     <div class="image_holder">
-      <%= image_tag post.image_link -%>
+      <p>Photo by <%= link_to post.auth.name, post.auth.url -%> ~~~ <%= post.provider -%></p>
+      <%= link_to image_tag(post.image_link), post.post_url -%>
+      <div class="is_liked">
+      <%- if @user -%>
+          <%- if @user.images.find_by_id(post.id) -%>
+             Лайкнуто!
+          <%- else -%>
+             <%= link_to 'лайкнуть фоточку!', action: :like, photo_id: post.id, remote: true -%>
+          <%- end -%>
+      <%- end -%>
+      </div>
     </div>
 <%- end -%>

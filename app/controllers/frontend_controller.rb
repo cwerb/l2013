@@ -1,21 +1,33 @@
 # -*- encoding : utf-8 -*-
 class FrontendController < ApplicationController
-  before_filter :drop, only: :login
   before_filter :authorise
   before_filter :get_tag, only: [:index, :rating]
 
   def index
-    @images = @tag.images.page(params[:page])
+    @images = @tag.images.page(params[:page]).order '"id" DESC'
+  end
+
+  def view
+    @images = @user.own_images
   end
 
   def rating
     @images = @tag.images.order('"likes_count" DESC').page(params[:page])
   end
 
+  def like
+    @user.images << Image.find_by_id(params[:photo_id])
+    respond_to do |format|
+      format.html {redirect_to action: :index}
+      format.js
+    end
+  end
+
   def rules
   end
 
   def login
+    session[:auth_id] = nil
   end
 
   def callback
@@ -28,16 +40,18 @@ class FrontendController < ApplicationController
           data: env['omniauth.auth'].info.to_s
       )
       user.email = env['omniauth.auth'].info.email unless env['omniauth.auth'].info.email.blank?
+      user.save
     end
     session[:auth_id] = user.id
     redirect_to action: :index
   end
 
   def final_stage
-    if request.post?
-       @user.email = params[:user][:email]
-       @user.save
-       redirect_to action: :index unless @user.errors.any?
+    if params[:post]
+       @user.email = params[:post][:email]
+       @user.is_subscribed = params[:post][:is_subscribed]
+       @user.accepted_deal = params[:post][:accepted_deal]
+       redirect_to action: :index if @user.save
     end
   end
 
@@ -47,7 +61,6 @@ class FrontendController < ApplicationController
   end
 
   def failure
-
   end
 
   protected
@@ -58,10 +71,6 @@ class FrontendController < ApplicationController
 
   def get_tag
     @tag = Hashtag.active
-    redirect_to action: 'blank'  if @tag.nil?
-  end
-
-  def drop
-    session[:auth_id] = nil
+    redirect_to action: 'blank' if @tag.nil?
   end
 end

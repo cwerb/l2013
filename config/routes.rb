@@ -5,7 +5,7 @@ L2013::Application.routes.draw do
 
   root to: 'frontend#index'
 
-  match "nothing-here", to: 'frontend#blank'
+  match "nothing here", to: 'frontend#blank'
 
   match "top", to: 'frontend#rating'
 
@@ -13,11 +13,15 @@ L2013::Application.routes.draw do
 
   match "login", to: 'frontend#login'
 
+  match 'like/:photo_id', to: 'frontend#like'
+
+  match "lookwhativedone", to: 'frontend#view'
+
   match "auth/failure", to: 'frontend#failure'
 
   match "auth/:provider/callback", to:'frontend#callback'
 
-  match "soooclose", to: 'frontend#final_stage', via: [:post, :get]
+  match "soooclose", to: 'frontend#final_stage', via: [:put, :get]
 
   ActiveAdmin.routes(self)
 

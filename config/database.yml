@@ -10,6 +10,12 @@ common: &common
   password:
   database: rails-lipton
 
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
 development:
   <<: *common
 
@@ -21,5 +27,4 @@ test:
   database: rails-lipton-test
 
 production:
-  <<: *common
-  password: rails
+  <<: *sqlite

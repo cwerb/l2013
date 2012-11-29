@@ -3,6 +3,12 @@
     <%= f.text_field :email, placeholder: 'email' -%>
     </div>
     <div class="control-group">
+    <%= f.check_box :is_subscribed -%> подписаться на наш веселый спам!
+    </div>
+    <div class="control-group">
+    <%= f.check_box :accepted_deal -%> заключить <%= link_to 'договор с дьяволом', action: :rules -%>
+    </div>
+    <div class="control-group">
     <%= f.submit 'зарегистрироваться', class: 'btn' -%>
     </div>
 <%- end -%>
