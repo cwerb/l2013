@@ -4,7 +4,7 @@ Instagram.configure do |config|
   config.client_secret = "1906cbd03e674cca92a4480e7bb64adb"
 end
 
-Daemons.call(multiple: false, monitor: true) do
+Daemons.run_proc("instagram-parser", multiple: false, monitor: true) do
   start_time = Time.now.to_i.to_s
   tag = Hashtag.active
   while true do
