@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 TweetStream.configure do |config|
   config.consumer_key = "HHPM3KuA3Q3G7W5s9qTOLw"
   config.consumer_secret = "HBUJxOUo7YLlfskUPDJQnJZeFrJCjDLDqhhGVCBJs"
@@ -6,8 +7,7 @@ TweetStream.configure do |config|
 end
 
 
-Daemons.call(multiple: false) do
-
+Daemons.call(multiple: false, monitor: true) do
   tag = Hashtag.active
   TweetStream::Client.new.track '#'+tag.tag do |status|
     status.media.each do |photo|
@@ -20,4 +20,4 @@ Daemons.call(multiple: false) do
       )
     end
   end
-end
+end unless Rails.env.development?

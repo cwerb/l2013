@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '>= 3.2.7'
 
+gem 'russian', '~> 0.6.0'
 
 #parser
 gem 'instagram'

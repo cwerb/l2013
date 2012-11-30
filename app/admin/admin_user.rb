@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
-ActiveAdmin.register AdminUser do     
-  index do                            
+ActiveAdmin.register AdminUser do
+  menu :priority => 2, :label => "Список почетных членов A"
+  index do
     column :email                     
     column :current_sign_in_at        
     column :last_sign_in_at           
