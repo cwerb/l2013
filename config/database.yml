@@ -7,7 +7,7 @@
 common: &common
   adapter: postgresql
   username: rails
-  password:
+  password: rails
   database: rails-lipton
 
 # Warning: The database defined as "test" will be erased and
@@ -23,6 +23,4 @@ test:
 
 production:
   <<: *common
-  username: postgres
-  password: postgres
   database: rails-lipton-production
