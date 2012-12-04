@@ -25,7 +25,7 @@ ActiveAdmin.register Auth, as: "poster" do
   end
 
 
-  index do
+  index title: "Участники конкурса" do
     selectable_column
     column :id
     column "Соцсеть", :provider
