@@ -9,8 +9,8 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Прямо сейчас" do
           ul do
             li raw %(Хэштег сейчас: <b>##{Hashtag.active.tag}</b>)
-            li raw %(Всего пользователей сайта: <b>#{Auth.count}</b>)
-            li raw %(Всего запостивших хрень с хэштегом: <b>#{Auth.unscoped.count}</b>)
+            li raw %(Всего пользователей сайта: <b>#{Auth.registred.count}</b>)
+            li raw %(Всего запостивших хрень с хэштегом: <b>#{Auth.count}</b>)
             li raw %(Всего смешных картинок: <b>#{Image.count}</b>)
             li raw %(Всего смешных картинок с текущим хэштегом: <b>#{Hashtag.active.images.count}</b>)
           end
