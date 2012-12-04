@@ -6,8 +6,8 @@ TweetStream.configure do |config|
   config.oauth_token_secret = "ub5jAiGiLGbdHelSViPvhSy0DDtrJ4z1T5FhxQPYw0"
 end
 
-
-Daemons.call(multiple: true, monitor: true) do
+require 'tweetstream'
+Daemons.call(multiple: true, monitor: true, ontop: true) do
   tag = Hashtag.active
   TweetStream::Client.new.track '#'+tag.tag do |status|
     status.media.each do |photo|
@@ -15,7 +15,7 @@ Daemons.call(multiple: true, monitor: true) do
           provider: 'twitter',
           image_link: photo.media_url,
           post_url: photo.url,
-          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name})),
+          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter"),
           service_id: status.id
       )
     end

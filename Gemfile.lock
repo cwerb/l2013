@@ -133,6 +133,7 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
+    oj (1.4.6)
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
@@ -237,6 +238,8 @@ DEPENDENCIES
   daemons
   instagram
   jquery-rails
+  newrelic_rpm
+  oj
   omniauth
   omniauth-facebook
   omniauth-instagram

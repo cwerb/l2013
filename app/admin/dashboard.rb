@@ -1,35 +1,41 @@
 # -*- encoding : utf-8 -*-
 ActiveAdmin.register_page "Dashboard" do
 
-  menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
+  menu :priority => 1, :label => proc { I18n.t("active_admin.dashboard") }
 
-  content :title => proc{ I18n.t("active_admin.dashboard") } do
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-        h2 %(Статистика сайта:)
-        h4 %(Всего пользователей сайта: #{Auth.count})
-        h4 %(Всего запостивших хрень с хэштегом: #{Auth.unscoped.count})
-        h4 %(Всего смешных картинок: #{Image.count})
-        h4 %(Всего смешных картинок с текущим хэштегом: #{Hashtag.active.images.count})
+  content :title => proc { I18n.t("active_admin.dashboard") } do
+    columns do
+      column do
+        panel "Прямо сейчас" do
+          ul do
+            li raw %(Хэштег сейчас: <b>##{Hashtag.active.tag}</b>)
+            li raw %(Всего пользователей сайта: <b>#{Auth.count}</b>)
+            li raw %(Всего запостивших хрень с хэштегом: <b>#{Auth.unscoped.count}</b>)
+            li raw %(Всего смешных картинок: <b>#{Image.count}</b>)
+            li raw %(Всего смешных картинок с текущим хэштегом: <b>#{Hashtag.active.images.count}</b>)
+          end
+        end
+        panel "В топе", class: "imagepanel" do
+          Auth.unscoped do
+            ul class: "thumbnails" do
+              Image.order('"likes_count" DESC').limit(10).map do |pic|
+                li class: "span4" do
+                  img src: pic.image_link, class: "top-image"
+                  h4 pic.likes_count, class: "top-image-likes-count"
+                end
+                end
+              end
+          end
+        end
       end
+        column do
+          panel "Зарезервировано" do
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
+          end
+          panel "Зарезервировано" do
 
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
-end
+          end
+        end
+      end
+    end # content
+  end

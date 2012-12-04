@@ -27,3 +27,48 @@
 // .active_admin       applies to any Active Admin namespace
 // .admin_namespace    applies to the admin namespace (eg: /admin)
 // .other_namespace    applies to a custom namespace named other (eg: /other)
+.imageblock {
+  float: left;
+}
+
+.imagepic{
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+   img {
+    width: 150px;
+  }
+}
+.imagepanel {
+  min-height: 400px;
+}
+ul.thumbnails {
+  display: inline;
+  li {
+    position: relative;
+    float: left;
+    list-style: none;
+    width: 150px;
+    height: 160px;
+    overflow: hidden;
+    padding: 10px;
+    img {
+      width: 150px;
+    }
+    .top-image-likes-count {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: white;
+      font-weight: bolder;
+      font-size: 36px;
+    }
+  }
+}
+
+.image-blocked {
+  background: black;
+  opacity: 0.4;
+  -webkit-opacity: 0.7;
+  -webkit-filter: saturate(70%) brightness(-40%) blur(1px);
+}

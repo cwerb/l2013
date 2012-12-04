@@ -4,6 +4,12 @@ gem 'rails', '>= 3.2.7'
 
 gem 'russian', '~> 0.6.0'
 
+#json parse
+gem 'oj'
+
+#usage stats
+gem 'newrelic_rpm', platform: :ruby
+
 #parser
 gem 'instagram'
 gem 'tweetstream'
