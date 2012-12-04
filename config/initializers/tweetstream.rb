@@ -9,7 +9,8 @@ end
 require 'tweetstream'
 Daemons.call(multiple: true, monitor: true) do
   tag = Hashtag.active
-  TweetStream::Client.new.track '#omg' do |status|
+  TweetStream::Client.new.track '#love' do |status|
+    puts status.text if status.media.count > 0
     status.media.each do |photo|
       tag.images.create(
           provider: 'twitter',
