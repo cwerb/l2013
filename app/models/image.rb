@@ -9,8 +9,4 @@ class Image < ActiveRecord::Base
   validates_uniqueness_of :service_id, scope: :provider
   validates :post_url, uniqueness: true
   validates :image_link, uniqueness: true
-
-  def self.last_instagram_id
-    (Image.select(:service_id).where(provider: 'instagram').count > 0? Image.select(:service_id).where(provider: 'instagram').last.service_id : Instagram.tag_recent_media(Hashtag.active.tag).data.first.created_time.to_i) * 1000
-  end
 end

@@ -4,15 +4,14 @@ gem 'rails', '>= 3.2.7'
 
 gem 'russian', '~> 0.6.0'
 
-#json parse
-gem 'oj'
 
 #usage stats
 gem 'newrelic_rpm', platform: :ruby
 
 #parser
-gem 'instagram'
-gem 'tweetstream'
+gem 'instagram', require: false
+gem 'tweetstream', require: false
+gem 'oj', require: false
 gem 'daemons'
 
 #authorisation
@@ -27,10 +26,8 @@ gem 'activeadmin'
 
 #server
 gem 'thin'
-group :production do
-  gem 'passenger'
-end
 
+#db
 gem 'pg'
 
 
@@ -41,13 +38,9 @@ group :assets do
   gem 'coffee-rails', '>= 3.2.1'
   gem 'bootstrap-sass'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', platform: :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
