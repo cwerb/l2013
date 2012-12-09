@@ -4,7 +4,7 @@ class FrontendController < ApplicationController
   before_filter :get_tag, only: [:index, :rating]
 
   def index
-    @images = @tag.images.page(params[:page]).order '"id" DESC'
+    @images = @tag.images.page(params[:page]).order('"id" DESC').per 24
   end
 
   def view
@@ -12,7 +12,7 @@ class FrontendController < ApplicationController
   end
 
   def rating
-    @images = @tag.images.order('"likes_count" DESC').page(params[:page])
+    @images = @tag.images.order('"likes_count" DESC').page(params[:page]).per 24
     respond_to do |format|
       format.js
     end

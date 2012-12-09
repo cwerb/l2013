@@ -8,6 +8,7 @@ body {
   background-attachment: fixed;
   min-width: 640px;
   overflow-x: hidden;
+  z-index: 1;
 }
 
 .navbar-inner {
@@ -45,10 +46,11 @@ body {
     }
   }
 }
-
+.spacer {
+  height: 86px;
+  width: 100%;
+}
 .wrapper {
-  position: relative;
-  top: 86px;
   background: #f8f8f8;
   max-width: 1024px;
   min-width: 640px;
@@ -81,6 +83,7 @@ body {
         }
       }
     }
+    z-index: 5;
   }
   .tasks-top {
     margin: 0 -10px -10px;
@@ -91,7 +94,7 @@ body {
     border-right: 10px solid transparent;
     position: relative;
     top: -10px;
-    z-index: -10;
+    z-index: 3;
   }
   .tasks {
     background: #ffbf00;
@@ -177,7 +180,7 @@ body {
     border-right: 10px solid transparent;
     position: relative;
     top: -10px;
-    z-index: -10;
+    z-index: 3;
   }
 
   .images {
@@ -270,7 +273,9 @@ body {
   }
   .image-holder-holder {
     height: 261px;
+    vertical-align: top;
     .image-holder {
+      vertical-align: top;
       margin-top: 40px;
       width: 221px;
       height: 221px;
@@ -300,6 +305,7 @@ body {
           img {
             width: 20px;
             border-radius: 10px;
+            vertical-align: top;
           }
         }
       }
