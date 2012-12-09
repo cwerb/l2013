@@ -54,7 +54,7 @@
         <div class="image-holder">
           <div class="likes-counter <%= 'liked' if (@user.images.find_by_id(post.id) if @user) %>">
             <p><%= post.likes_count %></p></div>
-          <div class="image-cropper"> <%= image_tag(post.image_link) -%></div>
+          <div class="image-cropper"> <%= link_to image_tag(post.image_link), action: :like, photo_id: post.id, remote: true -%></div>
           <div class="image-data"><%= image_tag post.auth.avatar_url, class: :avatar %>
             <span> <%= post.auth.name %> </span> <%= image_tag %(assets/#{post.provider}.png) %></div>
         </div>

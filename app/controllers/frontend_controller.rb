@@ -19,7 +19,11 @@ class FrontendController < ApplicationController
   end
 
   def like
-    Image.likes_count += 1 if @user.images << Image.find_by_id(params[:photo_id])
+    image = Image.find_by_id(params[:photo_id])
+    if @user.images << image
+      image.likes_count += 1
+      image.save
+    end
 
     respond_to do |format|
       format.html {redirect_to action: :index}
