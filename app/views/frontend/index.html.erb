@@ -1,18 +1,63 @@
-<h2>
-  Хэштег сейчас: #<%= @tag.tag -%>
-</h2>
-<% @images.each do |post| -%>
-    <div class="image_holder">
-      <p>Photo by <%= link_to post.auth.name, post.auth.url -%> ~~~ <%= post.provider -%></p>
-      <%= link_to image_tag(post.image_link), post.post_url -%>
-      <div class="is_liked">
-      <%- if @user -%>
-          <%- if @user.images.find_by_id(post.id) -%>
-             Лайкнуто!
-          <%- else -%>
-             <%= link_to 'лайкнуть фоточку!', action: :like, photo_id: post.id, remote: true -%>
-          <%- end -%>
-      <%- end -%>
+<div class="ad-carousel">
+  <div class="carousel-content">
+    <div class="carousel-block">
+      <div class="content"> в Instagram!
       </div>
     </div>
-<%- end -%>
+    <div class="carousel-block">
+      <div class="content"> в Instagram!
+      </div>
+    </div>
+    <div class="carousel-block">
+      <div class="content"> в Instagram!
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tasks-top"></div>
+<div class="tasks">
+  <ul class="task-menu">
+    <li class="task">Задание I</li>
+    <li class="task">Задание II</li>
+    <li class="task">Задание III</li>
+    <div class="lavalamp"></div>
+  </ul>
+  <div class="tasks-carousel-holder">
+    <div class="tasks-carousel">
+      <div class="tasks-carousel-content">
+        <div class="task">
+          <img src="assets/sample-task-pic.png">
+        </div>
+        <div class="task">
+          <img src="assets/sample-task-pic.png"></div>
+        <div class="task">
+          <img src="assets/sample-task-pic.png"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tasks-bottom"></div>
+
+<div class="images">
+  <div class="order">
+    <ul>
+      <a href="#" class="selected">
+        <li><p>По дате</p></li>
+      </a>
+      <a href="#">
+        <li><p>По рейтингу</p></li>
+      </a>
+    </ul>
+  </div>
+  <% @images.each do |post| -%>
+      <div class="image-holder-holder">
+        <div class="image-holder">
+          <div class="likes-counter <%= 'liked' if (@user.images.find_by_id(post_id) if @user) %>">
+            <p><%= post.likes_count %></p></div>
+          <div class="image-cropper"> <%= image_tag(post.image_link) -%></div>
+          <div class="image-data"><span><%= image_tag post.auth.avatar_url, class: :avatar %></span>
+            <span> <%= post.auth.name %> </span> <span> <%= image_tag %(assets/#{post.provider}.png) %></span></div>
+        </div>
+      </div>
+  <%- end -%>
+</div>

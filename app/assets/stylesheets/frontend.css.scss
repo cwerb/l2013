@@ -1,12 +1,347 @@
 // Place all the styles related to the frontend controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: url("body_background.jpg");
+  background-size: 100% auto;
+  background-attachment: fixed;
+  min-width: 640px;
+  overflow-x: hidden;
+}
+
+.navbar-inner {
+  background-image: url("header_background.png");
+  background-size: contain;
+  height: 63px;
+  border: 0;
+  .navbar-content-holder {
+    max-width: 1024px;
+    min-width: 640px;
+    margin: 0 auto;
+    .brand {
+      padding: 6px 0;
+      margin: 0;
+    }
+    ul {
+      border-left: 1px solid #ffa914;
+      float: right;
+    }
+    ul li {
+      width: 123px;
+      height: 48px;
+      border-left: 1px solid rgba(255, 255, 255, 0.23);
+      border-right: 1px solid #ffa914;
+      padding-top: 12px;
+      text-align: center;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 24px;
+      text-transform: capitalize;
+      font-weight: bold;
+      color: #934c00;
+      a, a:visited {
+        color: #934c00;
+      }
+    }
+  }
+}
+
 .wrapper {
   position: relative;
-  top: 50px;
-  .image_holder {
-    padding-left: 50%;
-    margin-left: -306px;
+  top: 86px;
+  background: #f8f8f8;
+  max-width: 1024px;
+  min-width: 640px;
+  margin: 0 auto;
+  .ad-carousel {
+    max-width: 1024px;
+    min-width: 640px;
+    overflow: hidden;
+    background: black;
+    background-image: -webkit-radial-gradient(50% 50%, ellipse farthest-corner, #222 0%, black 80%);
+    background-image: -moz-radial-gradient(50% 50%, ellipse farthest-corner, #222 0%, black 80%);
+    background-image: -ms-radial-gradient(50% 50%, ellipse farthest-corner, #222 0%, black 80%);
+    background-image: -o-radial-gradient(50% 50%, ellipse farthest-corner, #222 0%, black 80%);
+    background-image: radial-gradient(50% 50%, ellipse farthest-corner, #222 0%, black 80%);
+    height: 313px;
+    .carousel-content {
+      width: 301%;
+      position: relative;
+      left: 0px;
+      transition: left 2s;
+      -moz-transition: left 2s; /* Firefox 4 */
+      -webkit-transition: left 2s; /* Safari and Chrome */
+      -o-transition: left 2s; /* Opera */
+      .carousel-block {
+        width: 33.3%;
+        height: 313px;
+        display: inline-block;
+        .content {
+          padding: 92px 180px 92px 258px;
+        }
+      }
+    }
+  }
+  .tasks-top {
+    margin: 0 -10px -10px;
+    width: auto;
+    height: 0;
+    border-bottom: 10px solid #90391a;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: relative;
+    top: -10px;
+    z-index: -10;
+  }
+  .tasks {
+    background: #ffbf00;
+    height: 313px;
+    margin: 0 -10px;
+    width: auto;
+    ul.task-menu {
+      height: 47px;
+      width: 345px;
+      margin: 0 auto;
+      clear: both;
+      li {
+        float: left;
+        list-style: none;
+        color: #976000;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 19px 16px;
+        line-height: 100%;
+        width: 83px;
+      }
+      .lavalamp {
+        background: url("lavalamp.png") no-repeat scroll 0 0 transparent;
+        background-size: contain;
+        transition-duration: 1s;
+        -moz-transition-duration: 1s; /* Firefox 4 */
+        -webkit-transition-duration: 1s; /* Safari and Chrome */
+        -o-transition-duration: 1s; /* Opera */
+        height: 63px;
+        width: 109px;
+        position: relative;
+        top: 3px;
+        padding-left: 1px;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+        z-index: 400;
+      }
+    }
+    .tasks-carousel-holder {
+      width: 100%;
+      .tasks-carousel {
+        background: white;
+        background: linear-gradient(bottom, #e9e9e9, #ffffff);
+        background: -moz-linear-gradient(bottom, #e9e9e9, #ffffff);
+        background: -webkit-linear-gradient(bottom, #e9e9e9, #ffffff);
+        background: -o-linear-gradient(bottom, #e9e9e9, #ffffff);
+        background: -ms-linear-gradient(bottom, #e9e9e9, #ffffff);
+        height: 250px;
+        margin: 0 7px;
+        overflow: hidden;
+        position: relative;
+        left: 0;
+        clear: both;
+        .tasks-carousel-content {
+          width: 305%;
+          position: relative;
+          left: 0;
+          -moz-transition: all 300ms ease;
+          -ms-transition: all 300ms ease;
+          -o-transition: all 300ms ease;
+          -webkit-transition: all 300ms ease;
+          transition: all 300ms ease;
+          .task {
+            display: inline-block;
+            width: 33%;
+            img {
+              max-height: 260px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tasks-bottom {
+    margin: 10px -10px 0;
+    width: auto;
+    height: 0;
+    border-top: 10px solid #90391a;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: relative;
+    top: -10px;
+    z-index: -10;
+  }
 
+  .images {
+    background: #f8f8f8;
+    ul {
+      width: 210px;
+      height: 41px;
+      margin: 0 auto;
+      background: #ffffff;
+      background: linear-gradient(top, #e9e9e9, #ffffff);
+      background: -moz-linear-gradient(top, #e9e9e9, #ffffff);
+      background: -webkit-linear-gradient(top, #e9e9e9, #ffffff);
+      background: -o-linear-gradient(top, #e9e9e9, #ffffff);
+      background: -ms-linear-gradient(top, #e9e9e9, #ffffff);
+      border: 1px #ffffff;
+      border-radius: 5px;
+      box-shadow: #000000;
+      padding: 7px 7px 5px;
+      box-shadow: inset 0 1px 3px gray, inset 0 -10px 5px white;
+      border-bottom: #ffffff 1px solid;
+      a, a:visited, a:hover {
+        text-decoration: none;
+        color: #934c00;
+        width: 105px;
+        height: 35px;
+        float: left;
+        list-style: none;
+        background: linear-gradient(top, #ffe430, #ffbb10);
+        background: -moz-linear-gradient(top, #ffe430, #ffbb10);
+        background: -webkit-linear-gradient(top, #ffe430, #ffbb10);
+        background: -o-linear-gradient(top, #ffe430, #ffbb10);
+        background: -ms-linear-gradient(top, #ffe430, #ffbb10);
+        text-shadow: 0 1px 0 white;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 3px #df7500 solid;
+        p {
+          padding-top: 7px;
+        }
+        &:first-child {
+          border-radius: 5px 0 0 5px;
+        }
+        &:last-child {
+          border-radius: 0 5px 5px 0;
+        }
+      }
+      & .selected {
+        pointer-events: none;
+        background: linear-gradient(bottom, #ffe430, #ffbb10);
+        background: -moz-linear-gradient(bottom, #ffe430, #ffbb10);
+        background: -webkit-linear-gradient(bottom, #ffe430, #ffbb10);
+        background: -o-linear-gradient(bottom, #ffe430, #ffbb10);
+        background: -ms-linear-gradient(bottom, #ffe430, #ffbb10);
+        width: 104px;
+        height: 36px;
+        border-bottom: 2px #df7500 solid;
+        &:first-child {
+          border-right: 1px solid #e4a217;
+        }
+        &:last-child {
+          border-left: 1px solid #e4a217;
+        }
+      }
+    }
+    .order {
+      padding-bottom: 17px;
+      width: 100%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .image-holder-holder {
+      width: 24.7%;
+      display: inline-block;
+      margin: 0 auto;
+    }
+  }
+  @media screen and (min-width: 663px) and (max-width: 1024px) {
+    .image-holder-holder {
+      width: 33%;
+      display: inline-block;
+      margin: 0 auto;
+    }
+  }
+  @media screen and (max-width: 663px) {
+    .image-holder-holder {
+      width: 100%;
+      display: inline-block;
+      margin: 0 auto;
+    }
+  }
+  .image-holder-holder {
+    height: 261px;
+    .image-holder {
+      margin-top: 40px;
+      width: 221px;
+      height: 221px;
+      border: 6px #ffffff solid;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      .image-cropper {
+        position: relative;
+        width: 221px;
+        height: 221px;
+        float: none;
+        img {
+          overflow: hidden;
+          width: 100%;
+        }
+      }
+      .image-data {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        display: none;
+        span {
+          float: left;
+          height: 20px;
+          img {
+            width: 20px;
+            border-radius: 10px;
+          }
+        }
+      }
+      .likes-counter {
+        z-index: 12;
+        position: relative;
+        margin-bottom: -20px;
+        float: right;
+        top: 5px;
+        right: 5px;
+        width: 40px;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+        p {
+          text-align: right;
+          width: 35px;
+          color: white;
+          font-weight: bold;
+        }
+        p:before {
+          content: '❤';
+          font-family: arial;
+          color: white;
+        }
+      }
+      & .liked p:before {
+        color: red;
+      }
+      &:hover ~ .popup {
+        display: block;
+      }
+    }
+    .popup {
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      background: black;
+      display: none;
+      z-index: 1000;
+    }
   }
 }

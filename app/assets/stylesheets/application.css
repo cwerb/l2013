@@ -10,4 +10,6 @@
  *
  *= require_self
  *= require_tree .
+ *= require normalize-rails/index
+ *= require normalize-rails/normalize
 */

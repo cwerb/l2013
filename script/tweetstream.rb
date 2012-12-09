@@ -1,12 +1,13 @@
 # -*- encoding : utf-8 -*-
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] ||= 'development']
+ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
 
 class Image < ActiveRecord::Base
   attr_accessible :image_link, :likes_count, :created_at, :provider, :service_id, :hashtag, :post_url, :auth, :likes_count
   belongs_to :hashtag
   belongs_to :auth, foreign_key: :author_id
+  before_save {self.likes_count = 0}
 end
 class Hashtag < ActiveRecord::Base
   attr_accessible :tag, :start_time, :images
@@ -17,7 +18,7 @@ class Hashtag < ActiveRecord::Base
   end
 end
 class Auth < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :data, :url, :images, :is_subscribed, :accepted_deal, :images, :own_images
+  attr_accessible :provider, :uid, :name, :data, :url, :images, :is_subscribed, :accepted_deal, :images, :own_images, :avatar_url
   has_many :own_images, class_name: :Image, foreign_key: :author_id
   validates_uniqueness_of :uid, scope: :provider
   validates_uniqueness_of :url, scope: :provider
@@ -36,13 +37,13 @@ end
 @tag = Hashtag.active
 client = TweetStream::Client.new
 client.on_timeline_status do |status|
-  if (status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?)
+  if status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?
   status.media.each do |photo|
-      puts @tag.images.create(
+      @tag.images.create(
           provider: 'twitter',
           image_link: photo.media_url,
           post_url: photo.url,
-          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter"),
+          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: status.user.profile_image_url),
           service_id: status.id
       )
     end

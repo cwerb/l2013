@@ -12,13 +12,16 @@ gem 'newrelic_rpm', platform: :ruby
 gem 'instagram', require: false
 gem 'tweetstream', require: false
 gem 'oj', require: false
-gem 'daemons'
+gem 'twitter', require: false
+gem 'bluepill', platform: :ruby, require: false
+gem 'daemons', require: false
 
 #authorisation
 gem 'omniauth'
 gem 'omniauth-instagram'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'normalize-rails'
 
 #various stuff
 gem 'pacecar'

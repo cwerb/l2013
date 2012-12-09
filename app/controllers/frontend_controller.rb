@@ -13,10 +13,14 @@ class FrontendController < ApplicationController
 
   def rating
     @images = @tag.images.order('"likes_count" DESC').page(params[:page])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def like
-    @user.images << Image.find_by_id(params[:photo_id])
+    Image.likes_count += 1 if @user.images << Image.find_by_id(params[:photo_id])
+
     respond_to do |format|
       format.html {redirect_to action: :index}
       format.js

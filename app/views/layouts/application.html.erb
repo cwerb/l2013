@@ -5,12 +5,13 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-
-    <a class="brand" href="/">Lipton Insta 2013</a>
+  <div class="navbar-content-holder">
+        <a class="brand" href="/"><img src="assets/header_logo.png"></a>
         <ul class="nav">
           <% if @user -%>
               <li><%= link_to @user.name, action: :view, controller: :frontend -%></li>
@@ -21,7 +22,7 @@
           <li <%= %(class=active) if params[:action] == 'rating' -%>><%= link_to 'топ', action: :rating, controller: :frontend -%></li>
           <li <%= %(class=active) if params[:action] == 'rules' -%>><%= link_to 'правила', action: :rules, controller: :frontend -%></li>
         </ul>
-
+  </div>
   </div>
 </div>
 <div class="wrapper">
