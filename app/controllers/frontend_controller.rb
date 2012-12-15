@@ -4,7 +4,7 @@ class FrontendController < ApplicationController
   before_filter :get_tag, only: [:index, :rating]
 
   def index
-    @images = get_images params[:order] || 'time', params[:page] || 1
+    @images = get_images((params[:order] || 'time'), (params[:page] || 1))
   end
 
   def view
@@ -12,11 +12,11 @@ class FrontendController < ApplicationController
   end
 
   def like
-    image = Image.find_by_id(params[:photo_id])
-    if @user.images << image
-      image.likes_count += 1
-      image.save
-    end unless @user.images.exists? image
+    @image = Image.find_by_id(params[:photo_id])
+    if @user.images << @image
+      @image.likes_count += 1
+      @image.save
+    end unless @user.images.exists? @image
     respond_to do |format|
       format.html {redirect_to action: :index}
       format.js
@@ -80,9 +80,11 @@ class FrontendController < ApplicationController
 
   def get_images(order,page = 1)
     case order
-      when 'time' then order_by = '"created_at" DESC'
-      when 'rate' then order_by = '"likes_count" DESC'
+      when 'time'
+        order_by = '"created_at" DESC'
+      when 'rate'
+        order_by = '"likes_count" DESC'
     end
-    @images = @tag.images.order(order_by).page(page).per 24
+    @tag.images.order(order_by).page(page).per 24
   end
 end

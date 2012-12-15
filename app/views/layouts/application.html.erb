@@ -12,7 +12,9 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
   <div class="navbar-content-holder">
-        <a class="brand" href="/"><img src="assets/header_logo.png"></a>
+        <a class="brand" href="/">
+          <%= image_tag "header_logo.png" %>
+        </a>
         <ul class="nav">
           <% if @user -%>
               <li><%= link_to @user.name, action: :view, controller: :frontend -%></li>

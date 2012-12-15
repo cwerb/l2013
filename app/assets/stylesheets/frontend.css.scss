@@ -212,7 +212,7 @@ body {
         padding: 7px 7px 5px;
         box-shadow: inset 0 1px 3px gray, inset 0 -10px 5px white;
         border-bottom: #ffffff 1px solid;
-        a, a:visited, a:hover {
+        a, a:visited {
           text-decoration: none;
           color: #934c00;
           width: 105px;
@@ -378,6 +378,11 @@ body {
         display: none;
         z-index: 1000;
       }
+    }
+    .preloader {
+      width: 180px;
+      margin: 0 auto;
+      padding-bottom: 30px;
     }
   }
 

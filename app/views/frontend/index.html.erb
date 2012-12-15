@@ -1,3 +1,18 @@
+<% unless @user %>
+<div class="auth-block">
+  <button class="w-control-close"></button>
+  <p class="title">Войти через:</p>
+  <div class="buttons">
+    <div class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</div>
+    <p><a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a></p>
+    <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
+    <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
+  </div>
+  <p class="note">Авторизуйся, чтобы выигрывать призы <br>
+    и голосовать за фотографии</p>
+</div>
+<% end %>
+
 <div class="ad-carousel">
   <div class="carousel-content">
     <div class="carousel-block">
@@ -26,12 +41,14 @@
     <div class="tasks-carousel">
       <div class="tasks-carousel-content">
         <div class="task">
-          <img src="assets/sample-task-pic.png">
+          <%= image_tag 'sample-task-pic.png' %>
         </div>
         <div class="task">
-          <img src="assets/sample-task-pic.png"></div>
+          <%= image_tag 'sample-task-pic.png' %>
+        </div>
         <div class="task">
-          <img src="assets/sample-task-pic.png"></div>
+          <%= image_tag 'sample-task-pic.png' %>
+        </div>
       </div>
     </div>
   </div>
@@ -41,15 +58,11 @@
 <div class="images">
   <div class="order">
     <div class="order-select">
-      <a href="#" class="selected">
-        <p>По дате</p>
-      </a>
-      <a href="#">
-        <p>По рейтингу</p>
-      </a>
+      <%= link_to raw('<p>По дате</p>'), {order: 'time', page: 1}, remote: true, class: 'selected' %>
+      <%= link_to raw('<p>По рейтингу</p>'), {order: 'rate', page: 1}, remote: true %>
     </div>
   </div>
-<div class="main-content">
-  <%= render 'content' %>
-</div>
+  <div class="main-content">
+    <%= render 'content' %>
+  </div>
 </div>

@@ -40,3 +40,16 @@ $(document).ready  ->
     $('.lavalamp').css('left', ( $(this).position().left - $('ul.task-menu > li').first().position().left + 2))
     $('.tasks-carousel-content').css('left', $('.tasks-carousel-content > .task').first().position().left - $($('.tasks-carousel-content > .task')[$('ul.task-menu > li').index($(this))]).position().left)
   )
+  ajax_loading = false
+  ajax_out = false
+
+  check_height = -> $('.next-page-link').click() if 400 > ($(document).height()-$(window).height()-$(document).scrollTop())
+
+  check_height()
+  $(window).on('scroll', ->
+    check_height()
+  )
+
+
+  $(".auth-block .w-control-close").click ->
+    $(".auth-block").hide();
