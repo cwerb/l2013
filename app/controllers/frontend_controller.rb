@@ -79,12 +79,12 @@ class FrontendController < ApplicationController
   end
 
   def get_images(order,page = 1)
-    case order
+    order_by = case order
       when 'time'
-        order_by = 'created_at DESC, id DESC'
+        'created_at DESC, id DESC'
       when 'rate'
-        order_by = 'likes_count DESC, id DESC'
-    end
+        'likes_count DESC, id DESC'
+      end
     @tag.images.order(order_by).page(page).per 24
   end
 end
