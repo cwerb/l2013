@@ -1,0 +1,1 @@
+<%= raw params[:page] == 1 ? '$(".main-content").html' : '$(".next-page-link").replaceWith' %>('<%= escape_javascript render 'content' %>');

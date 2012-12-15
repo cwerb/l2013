@@ -27,22 +27,6 @@ ActiveAdmin.register Image do
     div class: %(imagepic #{"image-blocked" if image.is_blocked}) do
         img src: image.image_link
     end
-    h4 (image.likes_count > 0 ? %(Лайкнули уже #{image.likes_count}) : case @not_liked_image_count += 1
-                                                                         when 1
-                                                                           "Никто еще не любит эту фоточку"
-                                                                         when 2
-                                                                           "И эту тоже"
-                                                                         when 3
-                                                                           "И даже эту"
-                                                                         when 4
-                                                                           "Похоже, много фоточек тут говно"
-                                                                         when 5
-                                                                            "Даже продолжать не хочу"
-                                                                         when 6
-                                                                            "И не буду. Как будет хорошая фоточка - скажу"
-                                                                         else
-                                                                            ""
-                                                                      end
-                                                                         )
+    h4 %(Лайкнули уже #{image.likes_count})
   end
   end

@@ -40,24 +40,16 @@
 
 <div class="images">
   <div class="order">
-    <ul>
+    <div class="order-select">
       <a href="#" class="selected">
-        <li><p>По дате</p></li>
+        <p>По дате</p>
       </a>
       <a href="#">
-        <li><p>По рейтингу</p></li>
+        <p>По рейтингу</p>
       </a>
-    </ul>
+    </div>
   </div>
-  <% @images.each do |post| -%>
-      <div class="image-holder-holder">
-        <div class="image-holder">
-          <div class="likes-counter <%= 'liked' if (@user.images.find_by_id(post.id) if @user) %>">
-            <p><%= post.likes_count %></p></div>
-          <div class="image-cropper"> <%= link_to image_tag(post.image_link), action: :like, photo_id: post.id, remote: true -%></div>
-          <div class="image-data"><%= image_tag post.auth.avatar_url, class: :avatar %>
-            <span> <%= post.auth.name %> </span> <%= image_tag %(assets/#{post.provider}.png) %></div>
-        </div>
-      </div>
-  <%- end -%>
+<div class="main-content">
+  <%= render 'content' %>
+</div>
 </div>

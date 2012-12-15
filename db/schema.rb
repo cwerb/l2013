@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20121209161353) do
     t.string   "avatar_url"
   end
 
-  create_table "auths_images", :force => true do |t|
+  create_table "auths_images", :id => false, :force => true do |t|
     t.integer "auth_id"
     t.integer "image_id"
   end

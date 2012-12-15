@@ -5,19 +5,22 @@ L2013::Application.routes.draw do
 
   root to: 'frontend#index'
 
-  match "nothing here", to: 'frontend#blank'
-
-  match "top", to: 'frontend#rating'
-
-  match "obey", to: 'frontend#rules'
-
-  match "login", to: 'frontend#login'
-
-  match 'like/:photo_id', to: 'frontend#like'
+  match 'images/:order/:page', to: 'frontend#index'
 
   match "lookwhativedone", to: 'frontend#view'
 
+  match "lookwhativedone/:order/:page", to: 'frontend#view'
+
+  match "nothing here", to: 'frontend#blank'
+
+  match "obey", to: 'frontend#rules'
+  match "about", to: 'frontend#about'
+
+  match 'like/:photo_id', to: 'frontend#like'
+
   match "auth/failure", to: 'frontend#failure'
+
+  match "login", to: 'frontend#login'
 
   match "auth/:provider/callback", to:'frontend#callback'
 
