@@ -405,11 +405,13 @@ body {
     .signup {
       width: auto;
       margin: 0 auto;
-      a {
+      padding-top: 30px;
+      div {
         width: 245px;
         height: 62px;
         margin: 0 auto;
       }
+      padding-bottom: 70px;
     }
   }
 }
