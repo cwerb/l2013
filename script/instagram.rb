@@ -48,8 +48,9 @@ parse = lambda { |start_id = 123456789012345|
     )
   } if answer.data.count > 0
 }
-
+Daemons.new_proc('instagram.rb') do
 loop {
   parse.call
   sleep 30
 }
+end
