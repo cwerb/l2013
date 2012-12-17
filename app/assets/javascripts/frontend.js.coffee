@@ -24,6 +24,6 @@ $(document).ready  ->
   $(".auth-block .w-control-close").click ->
     $(".auth-block").hide();
 
-  $('.background').click ->
-    alert()
+  $('.background').on('click', ()->
     $('.overlay').html('')
+    true
