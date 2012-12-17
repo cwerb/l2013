@@ -26,4 +26,4 @@ $(document).ready  ->
 
   $('.background').on('click', ()->
     $('.overlay').html('')
-    true
+  )
