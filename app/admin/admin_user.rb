@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 ActiveAdmin.register AdminUser do
-  menu :priority => 12, :label => "Список почетных членов A"
+  menu :priority => 12, :label => "Административные пользователи"
   actions :index
   index :download_links => false do
     column :email                     

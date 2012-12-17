@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 ActiveAdmin.register Auth, as: "poster" do
-  menu :priority => 7, :label => "Посмотрите, это они сделали ЭТО!"
+  menu :priority => 7, :label => "Участники"
   filter :provider, as: :check_boxes, collection: proc {%w(facebook twitter instagram)}, label: "Социальная сеть"
-  filter :created_at, label: "Дата обнаружения"
+  filter :created_at, label: "дате первого появления"
   filter :name, label: "имени"
   filter :url
   actions :index, :show

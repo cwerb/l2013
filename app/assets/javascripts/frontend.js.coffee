@@ -50,6 +50,5 @@ $(document).ready  ->
     check_height()
   )
 
-
   $(".auth-block .w-control-close").click ->
     $(".auth-block").hide();

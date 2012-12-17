@@ -14,9 +14,4 @@ Bluepill.application 'lipstagram' do |app|
     process.checks :cpu_usage, every: 5.seconds, below: 10, times: [7,10]
     process.checks :mem_usage, every: 5.seconds, below: 100.megabytes, times: [7,10]
   end
-  app.process 'server' do |process|
-    process.start_command = 'thin start -p 80 -e production'
-    process.pid_file = '/tmp/thin.pid'
-    process.daemonize = true
-  end
 end

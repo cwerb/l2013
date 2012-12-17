@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 ActiveAdmin.register Hashtag do
-  menu :priority => 22, :label => "Склад боевых хэштэгов"
+  menu :priority => 22, :label => "Действующие хэштэги"
   config.filters = false
   actions :index, :edit, :update, :delete
 

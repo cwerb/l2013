@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 ActiveAdmin.register Image do
-  menu :priority => 3, :label => "Зохваченные картинки"
+  menu :priority => 3, :label => "Используемые изображения"
   filter :created_at, label: 'дата публикации'
   filter :provider, as: :select, collection: proc {%w(facebook twitter instagram)}, label: "соцсеть"
   filter :likes_count, label: 'количество лайков'
@@ -21,7 +21,7 @@ ActiveAdmin.register Image do
     redirect_to admin_images_path
   end
 
-  index title: "Зохваченные картинки", as: :grid, columns: 5 do |image|
+  index title: "Используемые изображения", as: :grid, columns: 5 do |image|
     @not_liked_image_count = 0 if @not_liked_image_count.nil?
     resource_selection_cell image
     div class: %(imagepic #{"image-blocked" if image.is_blocked}) do
