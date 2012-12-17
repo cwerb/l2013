@@ -16,15 +16,39 @@
 <div class="ad-carousel">
   <div class="carousel-content">
     <div class="carousel-block">
-      <div class="content"> в Instagram!
+      <div class="content">
+        <div class="image">
+          <%= image_tag "instagram_logo_camera.png" %>
+        </div>
+        <div class="text">
+          <h3>Lipton в Instagram</h3>
+          <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
+          <a href="instagram://user?username-lipton"></a>
+        </div>
       </div>
     </div>
     <div class="carousel-block">
-      <div class="content"> в Instagram!
+      <div class="content">
+        <div class="image">
+          <%= image_tag "instagram_logo_camera.png" %>
+        </div>
+        <div class="text">
+          <h3>Lipton в Instagram</h3>
+          <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
+          <a href="instagram://user?username-lipton"></a>
+        </div>
       </div>
     </div>
     <div class="carousel-block">
-      <div class="content"> в Instagram!
+      <div class="content">
+        <div class="image">
+          <%= image_tag "instagram_logo_camera.png" %>
+        </div>
+        <div class="text">
+          <h3>Lipton в Instagram</h3>
+          <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
+          <a href="instagram://user?username-lipton"></a>
+        </div>
       </div>
     </div>
   </div>
@@ -41,14 +65,53 @@
     <div class="tasks-carousel">
       <div class="tasks-carousel-content">
         <div class="task">
-          <%= image_tag 'sample-task-pic.png' %>
+          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+          <div class="task-block">
+            <h3>lipton solid assam</h3>
+            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год там готовят блюда из Дала и приносят их в дар богам.</p>
+            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег #ЛИПТОНВКУСНЯШКИ</b></p>
+          </div>
+          <div class="social">
+            <a href="instagram://camera">Загрузить фото</a>
+            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания, вручную</p>
+            <div class="time-left">
+              <p>До конца задания осталось:</p>
+              <div class="timeout">2 дня</div>
+            </div>
+          </div>
         </div>
         <div class="task">
-          <%= image_tag 'sample-task-pic.png' %>
+        <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+        <div class="task-block">
+          <h3>lipton solid assam</h3>
+          <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год там готовят блюда из Дала и приносят их в дар богам.</p>
+          <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег #ЛИПТОНВКУСНЯШКИ</b></p>
         </div>
+        <div class="social">
+          <a href="instagram://camera">Загрузить фото</a>
+          <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания, вручную</p>
+          <div class="time-left">
+            <p>До конца задания осталось:</p>
+            <div class="timeout">2 дня</div>
+          </div>
+        </div>
+      </div>
         <div class="task">
-          <%= image_tag 'sample-task-pic.png' %>
+        <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+        <div class="task-block">
+          <h3>lipton solid assam</h3>
+          <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год там готовят блюда из Дала и приносят их в дар богам.</p>
+          <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег #ЛИПТОНВКУСНЯШКИ</b></p>
         </div>
+        <div class="social">
+          <a href="instagram://camera">Загрузить фото</a>
+          <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания, вручную</p>
+          <div class="time-left">
+            <p>До конца задания осталось:</p>
+            <div class="timeout">2 дня</div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -58,8 +121,8 @@
 <div class="images">
   <div class="order">
     <div class="order-select">
-      <%= link_to raw('<p>По дате</p>'), {order: 'time', page: 1}, remote: true, class: 'selected' %>
-      <%= link_to raw('<p>По рейтингу</p>'), {order: 'rate', page: 1}, remote: true %>
+      <%= link_to raw('<p><img src="/assets/order_time.png">По дате</p>'), {order: 'time', page: 1}, remote: true, class: 'selected' %>
+      <%= link_to raw('<p><img src="/assets/order_rate.png">По рейтингу</p>'), {order: 'rate', page: 1}, remote: true %>
     </div>
   </div>
   <div class="main-content">

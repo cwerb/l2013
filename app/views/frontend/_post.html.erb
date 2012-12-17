@@ -1,0 +1,36 @@
+<div class="popup">
+  <div class="info">
+    <div class="author" style="background-image: url('<%= post.auth.avatar_url %>');">
+      <div class="lines">
+        <p class="name"><%= post.auth.name %></p>
+        <p class="hashtag">#<%= post.hashtag.tag %></p>
+      </div>
+    </div>
+    <div class="activity">
+      <div class="like">
+        <% if @user and not @user.images.exists? post %>
+            <div class="button"><%= link_to 'Лайк!', {action: :like, photo_id: post.id}, remote: true %></div>
+        <% else %>
+            <div class="button liked"> <%= %(#{post.likes_count} #{Russian.p(post.likes_count, "лайк", "лайка", "лайков")}) %> </div>
+        <% end %>
+      </div>
+      <div class="social">
+        <div class="button">
+          <p>Поделиться</p>
+        </div>
+        <div class="share">
+          <p>В твиттер</p>
+          <p>В фейсбук</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="image" style="background-image: url('<%= post.image_link %>');">
+    <div class="likes-counter <%= 'liked' if (@user.images.exists? post if @user) %>">
+      <%= (@user && ! @user.images.exists?(post)) ? (link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id}, remote: true) : raw(%(<p>#{post.likes_count}</p>))  %>
+    </div>
+  </div>
+  <div class="text" style="background-image: url('<%= %(/assets/#{post.provider}.png) %>');">
+    <p>Описание в две строкиОписание в две строкиОписание в две строкиОписание в две строкиОписание в две строки</p>
+  </div>
+</div>

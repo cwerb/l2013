@@ -8,6 +8,7 @@
         <div class="image-data"><%= image_tag post.auth.avatar_url, class: :avatar %>
           <span> <%= post.auth.name %> </span> <%= image_tag %(assets/#{post.provider}.png) %></div>
       </div>
+      <%= render partial: 'post', object: post %>
     </div>
 <%- end -%>
 <div class="preloader">
