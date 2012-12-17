@@ -32,14 +32,14 @@ Instagram.configure do |config|
   config.client_secret = "1906cbd03e674cca92a4480e7bb64adb"
 end
 
-tag = Hashtag.active
-start_time = tag.start_time.to_i.to_s
+@tag = Hashtag.active
+start_time = @tag.start_time.to_i.to_s
 
 parse = lambda { |start_id = 123456789012345|
-  answer = Instagram.tag_recent_media(tag.tag, max_tag_id: start_id, min_tag_id: Image.last_instagram_id(tag))
+  answer = Instagram.tag_recent_media(@tag.tag, max_tag_id: start_id, min_tag_id: Image.last_instagram_id(@tag))
   parse.call(answer.pagination.next_max_tag_id.to_i) if answer.pagination.next_max_tag_id.to_i > Image.last_instagram_id(tag) and answer.data.last.created_time > start_time
   answer.data.each { |status|
-    tag.images.create(
+    @tag.images.create(
         provider: 'instagram',
         image_link: status.images.standard_resolution.url,
         post_url: status.link,
