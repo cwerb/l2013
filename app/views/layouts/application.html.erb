@@ -25,7 +25,7 @@
               <li class="login-button"><a href="#">Логин</a></li>
           <%- end -%>
           <li <%= %(class=this) if params[:action] == 'about' -%>><%= link_to 'О конкурсе', action: :about, controller: :frontend -%></li>
-          <li <%= %(class=this) if params[:action] == 'rules' -%>><%= link_to 'правила', action: :rules, controller: :frontend -%></li>
+          <li <%= %(class=this) if params[:action] == 'gifts' -%>><%= link_to 'Призы', action: :gifts, controller: :frontend -%></li>
         </ul>
   </div>
   </div>

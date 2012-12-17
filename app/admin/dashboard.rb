@@ -16,7 +16,7 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-        column do
+        column span: 2 do
           panel "В топе", class: "imagepanel" do
             Auth.unscoped do
               ul class: "thumbnails" do

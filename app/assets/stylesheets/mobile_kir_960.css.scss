@@ -272,10 +272,7 @@
           background: url("mobile_tasks_background.png") top left repeat-x;
           box-shadow: 0 0 35px lightGray;
           h4 {
-            font-size: 13px;
-            font-weight: normal;
-            padding-top: 15px;
-            line-height: normal;
+            display: none;
           }
           h3 {
             margin-top: -12px;

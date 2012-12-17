@@ -46,7 +46,7 @@ ul.thumbnails {
   display: inline;
   li {
     position: relative;
-    float: left;
+    display: inline-block;
     list-style: none;
     width: 150px;
     height: 160px;

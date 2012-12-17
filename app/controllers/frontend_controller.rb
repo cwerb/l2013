@@ -23,11 +23,20 @@ class FrontendController < ApplicationController
     end
   end
 
+  def post
+    @post = Image.find_by_id(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def rules
   end
 
   def about
+  end
 
+  def gifts
   end
 
   def login
@@ -56,7 +65,7 @@ class FrontendController < ApplicationController
        @user.email = params[:post][:email]
        @user.is_subscribed = params[:post][:is_subscribed]
        @user.accepted_deal = params[:post][:accepted_deal]
-       redirect_to action: :index if @user.save
+       redirect_to action: :index
     end
   end
 

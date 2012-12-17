@@ -3,6 +3,8 @@ L2013::Application.routes.draw do
   get 'instagram/callback'
   post 'instagram/callback'
 
+  get '/popup/:id', to: 'frontend#post'
+
   root to: 'frontend#index'
 
   match 'images/:order/:page', to: 'frontend#index'
@@ -15,6 +17,7 @@ L2013::Application.routes.draw do
 
   match "obey", to: 'frontend#rules'
   match "about", to: 'frontend#about'
+  match "gifts", to: 'frontend#gifts'
 
   match 'like/:photo_id', to: 'frontend#like'
 

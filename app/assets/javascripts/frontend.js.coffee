@@ -43,6 +43,8 @@ $(document).ready  ->
   ajax_loading = false
   ajax_out = false
 
+
+
   check_height = -> $('.next-page-link').click() if 400 > ($(document).height()-$(window).height()-$(document).scrollTop())
 
   $('.login-button').click((e)->

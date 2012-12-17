@@ -10,7 +10,7 @@
     <% end %>
     $(".main-content").html('');
     <% else %>
-    $(".next-page-link").remove();
+    $(".preloader").remove();
     <% end %>
     $(".main-content").append('<%= escape_javascript render 'content' %>');
 })();

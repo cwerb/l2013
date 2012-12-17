@@ -4,13 +4,15 @@
         <div class="likes-counter <%= 'liked' if (@user.images.exists? post if @user) %>">
           <%= (@user && ! @user.images.exists?(post)) ? (link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id}, remote: true) : raw(%(<p>#{post.likes_count}</p>))  %>
         </div>
-        <div class="image-cropper"> <%= link_to image_tag(post.image_link), action: :like, photo_id: post.id, remote: true -%></div>
+        <div class="image-cropper"> <%= link_to image_tag(post.image_link, class: 'popupopener'), {action: :post, id: post.id}, remote: true -%></div>
         <div class="image-data"><%= image_tag post.auth.avatar_url, class: :avatar %>
-          <span> <%= post.auth.name %> </span> <%= image_tag %(assets/#{post.provider}.png) %></div>
+          <span> <%= post.auth.name %> </span> <%= image_tag %(#{post.provider}.png) %></div>
       </div>
+      <div class="popup-holder">
       <%= render partial: 'post', object: post %>
+      </div>
     </div>
 <%- end -%>
 <div class="preloader">
-<%= link_to image_tag('preloader.png'), {controller: params[:controller], action: params[:action], order: params[:order] || 'time', page: (params[:page].to_i+1) || 2}, remote: true, class: 'next-page-link' %>
+<%= link_to image_tag('preloader.png'), {controller: params[:controller], action: params[:action], order: params[:order] || 'time', page: (params[:page].to_i+1) || 2}, remote: true, class: 'next-page-link' if @images.count == 24 %>
 </div>

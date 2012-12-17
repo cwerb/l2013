@@ -1,8 +1,35 @@
-<div class="user">
-  <div class=""></div>
+
+<div class="profile-top">
+  <img class="bg" src="/assets/profile_top.png">
+  <div class="line top"></div>
+  <div class="line bottom"></div>
+
+  <div class="info">
+    <%= image_tag @user.avatar_url %>
+    <p class="name"><%= @user.name.length %></p>
+  </div>
+
+  <img src="" alt="" class="avatar">
 </div>
-<% @images.each do |post| -%>
-    <div class="image_holder">
-      <%= link_to image_tag(post.image_link), post.post_url -%>
-    </div>
-<%- end -%>
+<div class="images">
+<div class="main-content">
+  <% @images.each do |post| -%>
+      <div class="image-holder-holder" data-image-id="<%= post.id %>">
+        <div class="image-holder">
+          <div class="likes-counter <%= 'liked' if (@user.images.exists? post if @user) %>">
+            <%= (@user && ! @user.images.exists?(post)) ? (link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id}, remote: true) : raw(%(<p>#{post.likes_count}</p>))  %>
+          </div>
+          <div class="image-cropper"> <%= link_to image_tag(post.image_link, class: 'popupopener'), '#' -%></div>
+          <div class="image-data"><%= image_tag post.auth.avatar_url, class: :avatar %>
+            <span> <%= post.auth.name %> </span> <%= image_tag %(#{post.provider}.png) %></div>
+        </div>
+        <div class="popup-holder">
+          <%= render partial: 'post', object: post %>
+        </div>
+      </div>
+  <%- end -%>
+  <div class="preloader">
+    <%= link_to image_tag('preloader.png'), {controller: params[:controller], action: params[:action], order: params[:order] || 'time', page: (params[:page].to_i+1) || 2}, remote: true, class: 'next-page-link' if @images.count == 24 %>
+  </div>
+</div>
+</div>
