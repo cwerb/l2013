@@ -251,6 +251,12 @@ body .w-button:active span {
 .auth-block .buttons p {
     margin-bottom: 13px;
 }
+
+a.w-button.facebook:hover ~ .facebook-notice {
+    opacity: 1;
+}
+
+
 .auth-block .facebook-notice {
     font-family: 'flowbold';
     font-size: 18px;

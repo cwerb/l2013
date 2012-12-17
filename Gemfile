@@ -15,6 +15,7 @@ gem 'oj', require: false
 gem 'twitter', require: false
 gem 'bluepill', platform: :ruby, require: false
 gem 'daemons', require: false
+gem 'libv8', require: false
 
 #authorisation
 gem 'omniauth'
@@ -28,7 +29,13 @@ gem 'pacecar'
 gem 'activeadmin'
 
 #server
-gem 'thin'
+group :production do
+  gem 'passenger'
+end
+
+group :development, :test do
+  gem 'thin'
+end
 
 #db
 gem 'pg'

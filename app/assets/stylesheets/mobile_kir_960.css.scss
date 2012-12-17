@@ -1,0 +1,337 @@
+@media only screen and (max-device-width: 960px) {
+
+  .auth-block {
+    height: 855px;
+    width: 100%;
+    z-index: 999;
+    background: url('mobile_top_cover.png') center 0 #f59f01;
+    background-size: cover;
+  }
+  .auth-block img {
+    display: none;
+  }
+
+  .wrapper .tasks {
+    margin: 0;
+  }
+  .tasks-top, .tasks-bottom {
+    display: none;
+  }
+  .auth-block .title {
+    font-size: 34px;
+    margin-top: 180px;
+    background: none;
+  }
+
+  .auth-block .note {
+    font-size: 25px;
+    line-height: 32px;
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+    width: 100%;
+  }
+  .auth-block .facebook-notice {
+    display: none;
+  }
+  .auth-block .buttons {
+    margin-top: 49px;
+  }
+
+  .w-button {
+    width: 321px;
+    height: 89px;
+    background-position: 0 0;
+  }
+  .w-button span {
+    height: 89px;
+    line-height: 89px;
+    font-size: 40px;
+    width: 236px;
+    margin-left: 77px;
+  }
+  body .w-button:hover {
+    background-position: 0 -178px;
+    position: relative;
+    top: 1px;
+  }
+  .w-button.instagram {
+    background-image: url('button_instagram_2x.png');
+  }
+  .w-button.twitter {
+    background-image: url('button_twitter_2x.png');
+  }
+  .w-button.facebook {
+    background-image: url('button_facebook_2x.png');
+  }
+
+  .w-control-close {
+    width: 45px;
+    height: 45px;
+    background-image: url('button_close_2x.png');
+    background-position: 0 0;
+    background-size: auto 100%;
+  }
+  .w-control-close:hover {
+    background-position: -172px 0;
+  }
+  .auth-block .w-control-close {
+    top: 20px;
+    right: 18px;
+  }
+
+  .auth-block .buttons p {
+    margin-bottom: 22px;
+  }
+
+  .profile-top .info img {
+    width: 144px;
+    height: 144px;
+  }
+  .profile-top {
+    height: 370px;
+  }
+  .profile-top .line.bottom {
+    bottom: 37px;
+  }
+  .profile-top .line.top {
+    top: 52px;
+  }
+  .profile-top .info .name {
+    font-size: 28px;
+    margin-top: 24px;
+  }
+  .profile-top .info .city {
+    font-size: 21px;
+    margin-top: 13px;
+  }
+  .profile-top .info .city b {
+    height: 27px;
+    width: 18px;
+    background: url('profile_location_ico.png') 0 0;
+    background-size: cover;
+  }
+  .profile-content .include-socnet:after {
+    display: none;
+  }
+  .profile-content .include-socnet {
+    padding-top: 49px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .profile-content .include-socnet .buttons p {
+    width: 100%;
+    background: none;
+    border: none;
+  }
+  .profile-content .include-socnet .d-title {
+    display: none;
+  }
+  .profile-content .include-socnet .m-title {
+    display: block;
+    font-size: 24px;
+    line-height: 27px;
+    width: 100%;
+    padding-bottom: 38px;
+  }
+
+  .page-about-contest .icosBlock {
+    height: 840px;
+    background-image: url('mobile_top_cover_contest.png');
+    background-size: cover;
+  }
+  body .page-about-contest .icosBlock p {
+    font-size: 22px !important;
+    line-height: 22px !important;
+  }
+  .page-about-contest .icosBlock .s-ico1 {
+    width: 300px !important;
+  }
+  .page-about-contest .icosBlock .s-ico1 p {
+    margin-left: 28px;
+  }
+  .page-about-contest .icosBlock .s-ico1 h2 {
+    margin-left: 28px;
+  }
+  .page-about-contest div.icosBlock div.ico1 {
+    background-position: 70px 48px;
+  }
+  .page-about-contest .icosBlock .s-ico2 {
+    position: absolute;
+    right: 74px;
+    top: 213px;
+    width: 350px !important;
+  }
+  .page-about-contest .icosBlock .s-ico2 .ico2 {
+    margin: 0 !important;
+    text-align: right;
+    background-position: right 0;
+    width: 350px !important;
+  }
+  .page-about-contest .icosBlock .s-ico2 p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: right;
+    width: 350px !important;
+  }
+  .page-about-contest .icosBlock .s-ico2 h2 {
+    margin-left: 0 !important;
+    text-align: right;
+    width: 350px !important;
+  }
+  .page-about-contest .icosBlock .s-ico3 {
+    position: absolute;
+    left: 46px;
+    bottom: 45px;
+  }
+  .page-about-contest .icosBlock:after {
+    display: none;
+  }
+  .page-about-contest .txtBlock p {
+    width: 550px;
+  }
+  .page-about-contest .txtBlock p {
+    font-size: 28px;
+    line-height: 33px;
+  }
+  .page-about-contest .txtBlock .title {
+    background-position: center 57px;
+    padding-top: 113px;
+  }
+  .page-about-contest .txtBlock p.d {
+    display: none;
+  }
+  .page-about-contest .txtBlock p.m {
+    display: block;
+  }
+  .page-about-contest .button a:hover {
+    background-position: 0 0px;
+  }
+
+  .navbar {
+    height: 104px;
+    .navbar-inner {
+      height: 104px;
+      .navbar-content-holder {
+        background-image: url("mobile_navbar_background.png");
+        height: 104px;
+        .brand {
+          padding-left: 46px;
+          padding-top: 27px;
+        }
+        ul {
+          height: 99px;
+          li {
+            height: 85px;
+            width: 143px;
+            a {
+              padding-top: 24px;
+              text-shadow: none;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tasks-top {
+    display: none;
+  }
+
+  .wrapper {
+    .tasks {
+      margin-top: -10px;
+      background: url("mobile_tasks_background.png") top left repeat-x;
+      .task-menu {
+        display: none;
+      }
+      .task-control {
+        display: block;
+        height: 84px;
+        .previous {
+          float: left;
+        }
+        .next {
+          float: right;
+        }
+        .nav {
+          text-align: center;
+          padding-top: 35px;
+          height: 84px;
+          width: 139px;
+
+        }
+        .task {
+          widows: auto;
+          height: 84px;
+          margin: 0 140px;
+          text-align: center;
+          border-left: 1px #d9d9d9 solid;
+          border-right: 1px #d9d9d9 solid;
+          background: url("mobile_tasks_background.png") top left repeat-x;
+          h4 {
+            font-size: 13px;
+            font-weight: normal;
+            padding-top: 15px;
+            line-height: normal;
+          }
+          h3 {
+            margin-top: -12px;
+          }
+        }
+      }
+      .tasks-carousel-holder {
+        .tasks-carousel {
+          margin: 0;
+          top: -55px;
+          .tasks-carousel-content {
+            .task {
+              .social {
+                float: none;
+              }
+              .task-block {
+                width: 400px;
+                p {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .images {
+      .order {
+        display: none;
+      }
+      .main-content {
+        .image-holder-holder {
+          background: white;
+          width: 100%;
+          height: 758px;
+          .image-holder {
+            display: none;
+          }
+          .popup {
+            display: block;
+            position: relative;
+            top: inherit;
+            left: inherit;
+            width: 100%;
+            margin: 0 auto;
+            .image {
+              width: 100%;
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .auth-block {
+    display: none;
+  }
+}

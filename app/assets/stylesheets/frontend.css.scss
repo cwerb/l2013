@@ -196,6 +196,9 @@ body {
         z-index: 4;
       }
     }
+    .task-control {
+      display: none;
+    }
     .tasks-carousel-holder {
       width: 100%;
       .tasks-carousel {
