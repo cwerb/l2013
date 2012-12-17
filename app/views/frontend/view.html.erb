@@ -1,4 +1,4 @@
-
+<% if @user %>
 <div class="profile-top">
   <img class="bg" src="/assets/profile_top.png">
   <div class="line top"></div>
@@ -33,3 +33,19 @@
   </div>
 </div>
 </div>
+
+<% else %>
+
+    <div class="auth-block">
+      <p class="title">Войти через:</p>
+      <div class="buttons">
+        <p class="with-notice"><a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a>
+          <span class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</span>
+        </p>
+        <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
+        <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
+      </div>
+      <p class="note">Авторизуйся, чтобы выигрывать призы <br>
+        и голосовать за фотографии</p>
+    </div>
+<% end %>

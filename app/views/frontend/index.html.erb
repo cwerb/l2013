@@ -1,31 +1,36 @@
 <% if !@user %>
-<div class="auth-block">
-  <button class="w-control-close"></button>
-  <p class="title">Войти через:</p>
-  <div class="buttons">
-    <p class="with-notice"><a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a>
-    <div class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</div>
-    </p>
-    <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
-    <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
-  </div>
-  <p class="note">Авторизуйся, чтобы выигрывать призы <br>
-    и голосовать за фотографии</p>
-</div>
+    <div class="auth-block">
+      <button class="w-control-close"></button>
+      <p class="title">Войти через:</p>
+
+      <div class="buttons">
+        <p class="with-notice">
+            <a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a>
+            <span class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</span>
+        </p>
+        <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
+
+        <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
+      </div>
+      <p class="note">Авторизуйся, чтобы выигрывать призы <br>
+        и голосовать за фотографии</p>
+    </div>
 <% elsif @user.email.blank? %>
-        <div class="auth-block">
-          <button class="w-control-close"></button>
-          <p class="title">Войти через:</p>
-          <div class="buttons">
-            <p class="with-notice"><a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a>
-            <div class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</div>
-            </p>
-            <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
-            <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
-          </div>
-          <p class="note">Авторизуйся, чтобы выигрывать призы <br>
-            и голосовать за фотографии</p>
-        </div>
+    <div class="auth-block">
+      <p class="title">Войти через:</p>
+
+      <div class="buttons">
+        <p class="with-notice"><a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a>
+
+          <span class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</span>
+        </p>
+        <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
+
+        <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
+      </div>
+      <p class="note">Авторизуйся, чтобы выигрывать призы <br>
+        и голосовать за фотографии</p>
+    </div>
 <% end %>
 
 <div class="ad-carousel">
@@ -37,6 +42,7 @@
         </div>
         <div class="text">
           <h3>Lipton в Instagram</h3>
+
           <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
           <a href="instagram://user?username-lipton"></a>
         </div>
@@ -49,6 +55,7 @@
         </div>
         <div class="text">
           <h3>Lipton в Instagram</h3>
+
           <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
           <a href="instagram://user?username-lipton"></a>
         </div>
@@ -61,6 +68,7 @@
         </div>
         <div class="text">
           <h3>Lipton в Instagram</h3>
+
           <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
           <a href="instagram://user?username-lipton"></a>
         </div>
@@ -72,15 +80,16 @@
 <div class="tasks">
   <ul class="task-menu">
     <li class="task">Задание I</li>
-    <li class="task">Задание II</li>
-    <li class="task">Задание III</li>
+    <li class="task inactive">Задание II</li>
+    <li class="task inactive">Задание III</li>
     <div class="lavalamp"></div>
   </ul>
   <div class="task-control">
-   <div class="nav previous"><a href="#">Предыдущее</a></div>
+    <div class="nav previous"><a href="#">Предыдущее</a></div>
     <div class="nav next"><a href="#">Следующее</a></div>
     <div class="task">
       <h4>Задание</h4>
+
       <h3>Lipton solid assam</h3>
     </div>
   </div>
@@ -91,50 +100,74 @@
           <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
           <div class="task-block">
             <h3>lipton solid assam</h3>
-            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год там готовят блюда из Дала и приносят их в дар богам.</p>
-            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег #ЛИПТОНВКУСНЯШКИ</b></p>
+
+            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
+              там готовят блюда из Дала и приносят их в дар богам.</p>
+
+            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
+              #ЛИПТОНВКУСНЯШКИ</b></p>
           </div>
           <div class="social">
             <a href="instagram://camera">Загрузить фото</a>
-            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания, вручную</p>
+
+            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
+              вручную</p>
+
             <div class="time-left">
               <p>До конца задания осталось:</p>
+
               <div class="timeout">2 дня</div>
             </div>
           </div>
         </div>
         <div class="task">
-        <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
-        <div class="task-block">
-          <h3>lipton solid assam</h3>
-          <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год там готовят блюда из Дала и приносят их в дар богам.</p>
-          <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег #ЛИПТОНВКУСНЯШКИ</b></p>
-        </div>
-        <div class="social">
-          <a href="instagram://camera">Загрузить фото</a>
-          <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания, вручную</p>
-          <div class="time-left">
-            <p>До конца задания осталось:</p>
-            <div class="timeout">2 дня</div>
+          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+          <div class="task-block">
+            <h3>lipton solid assam</h3>
+
+            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
+              там готовят блюда из Дала и приносят их в дар богам.</p>
+
+            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
+              #ЛИПТОНВКУСНЯШКИ</b></p>
+          </div>
+          <div class="social">
+            <a href="instagram://camera">Загрузить фото</a>
+
+            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
+              вручную</p>
+
+            <div class="time-left">
+              <p>До конца задания осталось:</p>
+
+              <div class="timeout">2 дня</div>
+            </div>
           </div>
         </div>
-      </div>
         <div class="task">
-        <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
-        <div class="task-block">
-          <h3>lipton solid assam</h3>
-          <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год там готовят блюда из Дала и приносят их в дар богам.</p>
-          <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег #ЛИПТОНВКУСНЯШКИ</b></p>
-        </div>
-        <div class="social">
-          <a href="instagram://camera">Загрузить фото</a>
-          <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания, вручную</p>
-          <div class="time-left">
-            <p>До конца задания осталось:</p>
-            <div class="timeout">2 дня</div>
+          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+          <div class="task-block">
+            <h3>lipton solid assam</h3>
+
+            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
+              там готовят блюда из Дала и приносят их в дар богам.</p>
+
+            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
+              #ЛИПТОНВКУСНЯШКИ</b></p>
+          </div>
+          <div class="social">
+            <a href="instagram://camera">Загрузить фото</a>
+
+            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
+              вручную</p>
+
+            <div class="time-left">
+              <p>До конца задания осталось:</p>
+
+              <div class="timeout">2 дня</div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </div>

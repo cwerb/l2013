@@ -252,7 +252,7 @@ body .w-button:active span {
     margin-bottom: 13px;
 }
 
-a.w-button.facebook:hover ~ .facebook-notice {
+p.with-notice a:hover ~ .facebook-notice {
     opacity: 1;
 }
 
@@ -567,11 +567,11 @@ div.txtBlock p {
     height: 34px;
     background-position: 0 2px;
 }
-.page-about-contest .button {
+.participate-button {
     text-align: center;
     padding-bottom: 76px;
 }
-.page-about-contest .button a {
+.participate-button a {
     display: inline;
     zoom:1;
     display: inline-block;
@@ -591,10 +591,10 @@ div.txtBlock p {
     font-weight: bold;
     text-shadow: 0 1px 1px #ffe79d;
 }
-.page-about-contest .button a:hover {
+.participate-button a:hover {
     background-position: 0 -62px;
 }
-.page-about-contest .button a:active {
+.participate-button a:active {
     background-position: 0 0px;
 }
 .page-about-contest .txtBlock p.m {

@@ -8,7 +8,7 @@ class FrontendController < ApplicationController
   end
 
   def view
-    @images = @user.images.page(params[:page]).per 24
+    @images = @user.images.page(params[:page]).per 24 if @user
   end
 
   def like
