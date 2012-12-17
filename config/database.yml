@@ -23,6 +23,6 @@ test:
 
 production:
   <<: *common
-  username: rails
-  password: rails
-  database: rails-lipton-production
+  username: insta
+  password:
+  database: insta

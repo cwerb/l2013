@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
+ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'development']
 
 
 class Image < ActiveRecord::Base
