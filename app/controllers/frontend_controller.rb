@@ -8,7 +8,7 @@ class FrontendController < ApplicationController
   end
 
   def view
-    @user.images.page(params[:page]).per 24
+    @images = @user.images.page(params[:page]).per 24
   end
 
   def like
@@ -32,6 +32,7 @@ class FrontendController < ApplicationController
 
   def login
     session[:auth_id] = nil
+    redirect_to '/'
   end
 
   def callback

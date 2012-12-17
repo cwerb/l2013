@@ -20,9 +20,8 @@
         <ul class="nav">
           <% if @user -%>
               <li><%= link_to @user.name, action: :view, controller: :frontend -%></li>
-              <li><%= link_to 'выйти', action: :login, controller: :frontend -%> </li>
           <%- else -%>
-              <li <%= %(class=this) if params[:action] == 'login' -%>><%= link_to 'логин', action: :login, controller: :frontend -%></li>
+              <li class="login-button"><a href="#">Логин</a></li>
           <%- end -%>
           <li <%= %(class=this) if params[:action] == 'about' -%>><%= link_to 'О конкурсе', action: :about, controller: :frontend -%></li>
           <li <%= %(class=this) if params[:action] == 'rules' -%>><%= link_to 'правила', action: :rules, controller: :frontend -%></li>

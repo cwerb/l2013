@@ -248,6 +248,7 @@
       .task-control {
         display: block;
         height: 84px;
+        overflow: hidden;
         .previous {
           float: left;
         }
@@ -269,6 +270,7 @@
           border-left: 1px #d9d9d9 solid;
           border-right: 1px #d9d9d9 solid;
           background: url("mobile_tasks_background.png") top left repeat-x;
+          box-shadow: 0 0 35px lightGray;
           h4 {
             font-size: 13px;
             font-weight: normal;
@@ -283,7 +285,6 @@
       .tasks-carousel-holder {
         .tasks-carousel {
           margin: 0;
-          top: -55px;
           .tasks-carousel-content {
             .task {
               .social {

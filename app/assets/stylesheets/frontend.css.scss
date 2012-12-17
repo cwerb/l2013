@@ -88,7 +88,7 @@ body {
     background-image: radial-gradient(50% 50%, ellipse farthest-corner, #222 0%, black 80%);
     height: 313px;
     .carousel-content {
-      width: 301%;
+      width: 302%;
       position: relative;
       left: 0px;
       transition: left 2s;
@@ -175,6 +175,7 @@ body {
         padding: 19px 16px;
         line-height: 100%;
         width: 89px;
+        cursor: pointer;
       }
       .lavalamp {
         background: url("lavalamp.png") no-repeat scroll 0 0 transparent;

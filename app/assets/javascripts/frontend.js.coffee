@@ -36,7 +36,7 @@ $(document).ready  ->
   )
 
 
-  $('ul.task-menu > li').hover(->
+  $('ul.task-menu > li').click(->
     $('.lavalamp').css('left', ( $(this).position().left - $('ul.task-menu > li').first().position().left + 2))
     $('.tasks-carousel-content').css('left', $('.tasks-carousel-content > .task').first().position().left - $($('.tasks-carousel-content > .task')[$('ul.task-menu > li').index($(this))]).position().left)
   )
@@ -44,6 +44,16 @@ $(document).ready  ->
   ajax_out = false
 
   check_height = -> $('.next-page-link').click() if 400 > ($(document).height()-$(window).height()-$(document).scrollTop())
+
+  $('.login-button').click((e)->
+    e.preventDefault()
+    if $('.auth-block').css('display') == 'none'
+      $(this).parent().addClass 'this'
+      $('.auth-block').css('display', 'block')
+    else
+      $(this).parent().removeClass 'this'
+      $('.auth-block').css('display', 'none')
+  )
 
   check_height()
   $(window).on('scroll', ->
