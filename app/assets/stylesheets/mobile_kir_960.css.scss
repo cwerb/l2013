@@ -319,8 +319,15 @@
             left: inherit;
             width: 100%;
             margin: 0 auto;
+            .info, .image, .text  {
+              width: 612px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .text {
+              margin-top: 28px;
+            }
             .image {
-              width: 100%;
               background-position: center;
               background-size: contain;
               background-repeat: no-repeat;
