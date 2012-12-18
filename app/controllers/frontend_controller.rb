@@ -48,7 +48,7 @@ class FrontendController < ApplicationController
   end
 
   def callback
-    user = Auth.where(provider: env['omniauth.auth'].provider, uid: env['omniauth.auth'].uid)
+    user = Auth.where(provider: env['omniauth.auth'].provider, uid: env['omniauth.auth'].uid).first || nil
     if user.nil?
       user = Auth.new(
           provider: env['omniauth.auth'].provider,
@@ -59,7 +59,6 @@ class FrontendController < ApplicationController
       )
       user.email = env['omniauth.auth'].info.email unless env['omniauth.auth'].info.email.blank?
       user.save
-      user = Auth.find_by_uid(user.uid)
     end
     session[:id] = user.id
     redirect_to action: :index
