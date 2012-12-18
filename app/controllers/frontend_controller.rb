@@ -48,7 +48,7 @@ class FrontendController < ApplicationController
   end
 
   def callback
-    user = Auth.where(provider: env['omniauth.auth'].provider, uid: env['omniauth.auth'].uid).first || nil
+    puts user = Auth.where(provider: env['omniauth.auth'].provider, uid: env['omniauth.auth'].uid).first || nil
     if user.nil?
       user = Auth.new(
           provider: env['omniauth.auth'].provider,
