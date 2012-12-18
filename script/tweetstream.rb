@@ -52,6 +52,6 @@ client.on_timeline_status do |status|
 end
 
 require 'daemons'
-Daemons.daemonize
-
+Daemons.run_proc('tweetstream.rb', multiple: false) do
 client.track '#' + @tag.tag
+end
