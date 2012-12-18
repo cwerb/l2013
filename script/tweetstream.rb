@@ -56,8 +56,7 @@ parse = lambda { |start_id = 123456789012345|
         post_url: status.link,
         auth: Auth.find_by_uid(status.user.id) || Auth.create(uid: status.user.id, name: status.user.screen_name || status.user.username, url: %(http://instagram.com/#{status.user.username}), provider: "instagram", avatar_url: (status.user.profile_image_url.blank? ? status.user.profile_image_url : "/assets/nopic.png")),
         service_id: status.created_time.to_i,
-        text: status.text,
-        service_time: Time.at(status.created_time.to_i)
+        text: status.text
     )
   } if answer.data.count > 0
 }
@@ -76,8 +75,7 @@ Twitter.search(@tag.tag).statuses.each do |status|
           post_url: photo.url,
           auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: (status.user.profile_image_url.blank? ? status.user.profile_image_url : "/assets/nopic.png")),
           service_id: status.id,
-          text: status.text,
-          service_time: status.created_at
+          text: status.text
       )
     end
   end
