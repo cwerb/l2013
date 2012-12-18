@@ -59,6 +59,7 @@ class FrontendController < ApplicationController
       )
       user.email = env['omniauth.auth'].info.email unless env['omniauth.auth'].info.email.blank?
       user.save
+      user = Auth.find_by_uid(user.uid)
     end
     session[:id] = user.id
     redirect_to action: :index
