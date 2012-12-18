@@ -9,9 +9,9 @@ L2013::Application.routes.draw do
 
   match 'images/:order/:page', to: 'frontend#index'
 
-  match "ohitsyou", to: 'frontend#view'
+  match "profile", to: 'frontend#view'
 
-  match "lookwhativedone/:order/:page", to: 'frontend#view'
+  match "profile/:order/:page", to: 'frontend#view'
 
   match "nothing here", to: 'frontend#blank'
 

@@ -63,7 +63,6 @@ class FrontendController < ApplicationController
       user.save
     end
     session[:id] = user.id
-    redirect_to action: :index
   end
 
   def final_stage
