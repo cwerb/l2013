@@ -1,4 +1,4 @@
-<% if !@user %>
+<% if @user.nil? %>
     <div class="auth-block" xmlns="http://www.w3.org/1999/html">
       <button class="w-control-close"></button>
       <p class="title">Войти через:</p>
