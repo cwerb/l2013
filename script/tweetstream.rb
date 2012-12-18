@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'development']
+ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
 
 class Image < ActiveRecord::Base
@@ -52,7 +52,4 @@ client.on_timeline_status do |status|
 
 end
 
-require 'daemons'
-Daemons.run_proc('tweetstream.rb') do
 client.track '#' + @tag.tag
-end
