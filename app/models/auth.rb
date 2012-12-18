@@ -6,5 +6,6 @@ class Auth < ActiveRecord::Base
   serialize :data
   has_and_belongs_to_many :images, uniq: true
   validates_uniqueness_of :uid, scope: :provider
-  validates_acceptance_of :accepted_deal
+  validates :accepted_deal, acceptance: true
+  validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
 end
