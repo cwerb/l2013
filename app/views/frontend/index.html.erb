@@ -85,7 +85,7 @@
               #ЛИПТОНВКУСНЯШКИ</b></p>
           </div>
           <div class="social">
-            <%= @user ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
+            <% if @user and @user.provider != 'facebook' link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
 
             <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
               вручную</p>
