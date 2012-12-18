@@ -3,7 +3,7 @@
 require 'daemons'
 Daemons.run_proc('instagram.rb') do
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open '../config/database.yml')[ENV["RAILS_ENV"] || 'production']
+ActiveRecord::Base.establish_connection YAML::load(File.open '/root/l2013/config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
 require 'instagram'
 Instagram.configure do |config|
