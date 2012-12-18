@@ -57,9 +57,9 @@
 <div class="tasks">
   <ul class="task-menu">
     <li class="task"><%= link_to 'Задание I', {tag: @hashtags.first.tag, order: 'time', page: 1}, remote: true %></li>
-    <li class="task <%= %(inactive) if @hashtags.second.start_time.future?%>"><%= link_to_unless @hashtags.second.start_time.future?, 'Задание II', {tag: @hashtags.second.tag, order: 'time', page: 1}, remote: true %></li>
-    <li class="task <%= %(inactive) if @hashtags.second.start_time.future?%>"><%= link_to_unless @hashtags.third.start_time.future?, 'Задание III', {tag: @hashtags.third.tag, order: 'time', page: 1}, remote: true %></li>
-    <div class="lavalamp"></div>
+    <li class="task<%= %( inactive) if @hashtags.second.start_time.future? %>"><%= link_to_unless @hashtags.second.start_time.future?, 'Задание II', {tag: @hashtags.second.tag, order: 'time', page: 1}, remote: true %></li>
+    <li class="task<%= %( inactive) if @hashtags.third.start_time.future? %>"><%= link_to_unless @hashtags.third.start_time.future?, 'Задание III', {tag: @hashtags.third.tag, order: 'time', page: 1}, remote: true %></li>
+    <div class="lavalamp" style="left: <%= @hashtags.find_index(@tag) * 121 + 3 %>px"></div>
   </ul>
   <div class="task-control">
     <div class="nav previous"><a href="#">Предыдущее</a></div>
@@ -72,7 +72,7 @@
   </div>
   <div class="tasks-carousel-holder">
     <div class="tasks-carousel">
-      <div class="tasks-carousel-content">
+      <div class="tasks-carousel-content" style="left: -<%= @hashtags.find_index(@tag) %>00%">>
         <div class="task">
           <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
           <div class="task-block">
@@ -89,12 +89,63 @@
 
             <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
               вручную</p>
-
+            <% if @hashtags.find_index(@tag) == 0 %>
             <div class="time-left">
               <p>До конца задания осталось:</p>
 
               <div class="timeout"><%= time_remaining %></div>
             </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="task">
+          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+          <div class="task-block">
+            <h3>lipton solid assam</h3>
+
+            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
+              там готовят блюда из Дала и приносят их в дар богам.</p>
+
+            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
+              #<%= @hashtags.second.tag.upcase %></b></p>
+          </div>
+          <div class="social">
+            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
+
+            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
+              вручную</p>
+            <% if @hashtags.find_index(@tag) == 1 %>
+            <div class="time-left">
+              <p>До конца задания осталось:</p>
+
+              <div class="timeout"><%= time_remaining %></div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="task">
+          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
+          <div class="task-block">
+            <h3>lipton solid assam</h3>
+
+            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
+              там готовят блюда из Дала и приносят их в дар богам.</p>
+
+            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
+              #<%= @hashtags.third.tag.upcase %></b></p>
+          </div>
+          <div class="social">
+            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
+
+            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
+              вручную</p>
+            <% if @hashtags.find_index(@tag) == 2 %>
+            <div class="time-left">
+              <p>До конца задания осталось:</p>
+
+              <div class="timeout"><%= time_remaining %></div>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>

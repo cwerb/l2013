@@ -21,6 +21,12 @@ $(document).ready  ->
     check_height()
   )
 
+  $('ul.task-menu > li').click(->
+    unless $(this).hasClass('inactive')
+      $('.lavalamp').css('left', ( $(this).position().left - $('ul.task-menu > li').first().position().left + 2))
+      $('.tasks-carousel-content').css('left', '-'+$('ul.task-menu > li').index($(this))+'00%')
+  )
+
   $(".auth-block .w-control-close").click ->
     $(".auth-block").hide();
 
