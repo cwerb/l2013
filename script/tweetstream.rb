@@ -1,4 +1,7 @@
 # -*- encoding : utf-8 -*-
+
+require 'daemons'
+Daemons.run_proc('instagram.rb') do
 require 'active_record'
 ActiveRecord::Base.establish_connection YAML::load(File.open '/mnt/data/www/insta.liptontea.ru/config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
@@ -23,47 +26,12 @@ class Auth < ActiveRecord::Base
   validates_uniqueness_of :uid, scope: :provider
   validates_uniqueness_of :url, scope: :provider
 end
-require 'tweetstream'
-require 'oj'
+require 'twitter'
 Twitter.configure do |config|
   config.consumer_key = "HHPM3KuA3Q3G7W5s9qTOLw"
   config.consumer_secret = "HBUJxOUo7YLlfskUPDJQnJZeFrJCjDLDqhhGVCBJs"
   config.oauth_token = "112754479-JabWqZpzcZS3Zvf4K9xqwYaGR0qIg63w5TF2oGs8"
   config.oauth_token_secret = "ub5jAiGiLGbdHelSViPvhSy0DDtrJ4z1T5FhxQPYw0"
-end
-
-@tag = Hashtag.active
-client = TweetStream::Client.new
-client.on_timeline_status do |status|
-  if status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?
-  status.media.each do |photo|
-      @tag.images.create(
-          provider: 'twitter',
-          image_link: photo.media_url,
-          post_url: photo.url,
-          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: status.user.profile_image_url),
-          service_id: status.id,
-          text: status.text
-      )
-    end
-  end
-end
-
-client.track @tag.tag do |status|
-  puts status
-  puts status.media.count
-  if status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?
-    status.media.each do |photo|
-      @tag.images.create(
-          provider: 'twitter',
-          image_link: photo.media_url,
-          post_url: photo.url,
-          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: status.user.profile_image_url),
-          service_id: status.id,
-          text: status.text
-      )
-    end
-  end
 end
 
 loop do
@@ -83,4 +51,5 @@ Twitter.search(@tag.tag).statuses.each do |status|
   end
 end
 sleep 30
+end
 end
