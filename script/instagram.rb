@@ -5,11 +5,7 @@ Daemons.run_proc('instagram.rb') do
 require 'active_record'
 ActiveRecord::Base.establish_connection YAML::load(File.open '/mnt/data/www/insta.liptontea.ru/config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
-require 'instagram'
-Instagram.configure do |config|
-  config.client_id = "66f96c768dd64b8887d10ae2feb6d1d6"
-  config.client_secret = "1906cbd03e674cca92a4480e7bb64adb"
-end
+
 class Image < ActiveRecord::Base
   attr_accessible :image_link, :likes_count, :created_at, :provider, :service_id, :hashtag, :post_url, :auth, :likes_count, :text
   belongs_to :hashtag
@@ -46,7 +42,8 @@ parse = lambda { |start_id = 123456789012345|
         post_url: status.link,
         auth: Auth.find_by_uid(status.user.id) || Auth.create(uid: status.user.id, name: status.user.screen_name || status.user.username, url: %(http://instagram.com/#{status.user.username}), provider: "instagram", avatar_url: (status.user.profile_image_url.blank? ? status.user.profile_image_url : "/assets/nopic.png")),
         service_id: status.created_time.to_i,
-        text: status.text
+        text: status.text,
+        service_time: Time.at status.created_time.to_i
     )
   } if answer.data.count > 0
 }
