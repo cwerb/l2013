@@ -9,7 +9,7 @@ class Image < ActiveRecord::Base
   validates :image_link, uniqueness: true
   before_save {self.likes_count = 0}
   def self.last_instagram_id(hashtag)
-    (Image.select(:service_id).where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : Instagram.tag_recent_media(hashtag.tag).data.first.created_time).to_i * 1000
+    (Image.where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : Instagram.tag_recent_media(hashtag.tag).data.first.created_time).to_i * 1000
   end
 end
 class Hashtag < ActiveRecord::Base
