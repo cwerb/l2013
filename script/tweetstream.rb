@@ -11,6 +11,8 @@ class Image < ActiveRecord::Base
   belongs_to :hashtag
   belongs_to :auth, foreign_key: :author_id
   before_save {self.likes_count = 0}
+  validates :post_url, uniqueness: true
+  validates :image_link, uniqueness: true
 end
 class Hashtag < ActiveRecord::Base
   attr_accessible :tag, :start_time, :images
