@@ -46,6 +46,7 @@
     top: 20%;
 }
 .profile-top .info img {
+    height: 144px;
     padding: 5px;
     box-shadow: 0 3px 3px #998102;
     background: #fff;
