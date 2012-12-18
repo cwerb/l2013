@@ -7,5 +7,5 @@ class Auth < ActiveRecord::Base
   has_and_belongs_to_many :images, uniq: true
   validates_uniqueness_of :uid, scope: :provider
   validates_uniqueness_of :url, scope: :provider
-  validates_acceptance_of :accepted_deal, if: Proc.new {action == "final_stage"}
+  validates_acceptance_of :accepted_deal, if: Proc.new {action_name == "final_stage"}
 end
