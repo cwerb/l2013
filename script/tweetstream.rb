@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 
 require 'daemons'
-Daemons.run_proc('instagram.rb') do
+Daemons.run_proc('tweetstream.rb') do
 require 'active_record'
 ActiveRecord::Base.establish_connection YAML::load(File.open '/mnt/data/www/insta.liptontea.ru/config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
