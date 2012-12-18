@@ -10,7 +10,8 @@ class Image < ActiveRecord::Base
   attr_accessible :image_link, :likes_count, :created_at, :provider, :service_id, :hashtag, :post_url, :auth, :likes_count, :text
   belongs_to :hashtag
   belongs_to :auth, foreign_key: :author_id
-  before_save {self.likes_count = 0}
+  before_create {self.likes_count = 0}
+  before_create {self.is_blocked = false; true}
   validates :post_url, uniqueness: true
   validates :image_link, uniqueness: true
 end
@@ -40,7 +41,7 @@ end
 
 
 loop do
-Twitter.search(@tag.tag).statuses.each do |status|
+Twitter.search(@tag.tag).statuses.reverse.each do |status|
   if status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?
     puts status.text
     status.media.each do |photo|

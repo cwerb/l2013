@@ -15,7 +15,8 @@ class Image < ActiveRecord::Base
   belongs_to :hashtag
   belongs_to :auth, foreign_key: :author_id
   validates :image_link, uniqueness: true
-  before_save {self.likes_count = 0}
+  before_create {self.likes_count = 0}
+  before_create {self.is_blocked = false; true}
   def self.last_instagram_id(hashtag)
     (Image.where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : Instagram.tag_recent_media(hashtag.tag).data.first.created_time).to_i * 1000
   end
@@ -42,7 +43,7 @@ start_time = @tag.start_time.to_i.to_s
 parse = lambda { |start_id = 123456789012345|
   answer = Instagram.tag_recent_media(@tag.tag, max_tag_id: start_id, min_tag_id: Image.last_instagram_id(@tag))
   parse.call(answer.pagination.next_max_tag_id.to_i) if answer.pagination.next_max_tag_id.to_i > Image.last_instagram_id(@tag) and answer.data.last.created_time > start_time
-  answer.data.each { |status|
+  answer.data.reverse.each { |status|
     @tag.images.create(
         provider: 'instagram',
         image_link: status.images.standard_resolution.url,
