@@ -19,15 +19,15 @@
     <div class="auth-block">
 
       <p class="title">Оставьте e-mail<br /> для получения призов</p>
-      <%= form_for @user, as: :post, url:{action: :final_stage}, html: {class: 'form-horizontal'} do |f| -%>
+      <%= form_for @user, as: :post, url:{action: :final_stage}, html: {class: 'form-horizontal'}, remote: true do |f| -%>
           <div class="control-group">
             <%= f.text_field :email, placeholder: 'email' -%>
           </div>
           <div class="control-group text">
-            <%= f.check_box :is_subscribed -%> <span class="checkbox selection"></span>я хочу узнавать о новых конкурсах Липтон
+            <%= f.check_box :is_subscribed -%> <span class="checkbox"></span>я хочу узнавать о новых конкурсах Липтон
           </div>
           <div class="control-group text">
-            <%= f.check_box :accepted_deal -%> <span class="checkbox selection"></span>я согласен с <%= link_to 'правилами конкурса', action: :rules -%>
+            <%= f.check_box :accepted_deal -%> <span class="checkbox"></span>я согласен с <%= link_to 'правилами конкурса', action: :rules -%>
           </div>
           <div class="control-group">
             <%= f.submit 'ОК', class: 'butn' -%>

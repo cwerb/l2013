@@ -8,7 +8,7 @@ class FrontendController < ApplicationController
   end
 
   def view
-    @images = @user.images.page(params[:page]).per 24 if @user
+    @images = @user.own_images if @user
   end
 
   def like
@@ -43,7 +43,7 @@ class FrontendController < ApplicationController
   end
 
   def login
-    session[:auth_id] = nil
+    session[:id] = nil
     redirect_to '/'
   end
 
@@ -59,7 +59,7 @@ class FrontendController < ApplicationController
       user.email = env['omniauth.auth'].info.email unless env['omniauth.auth'].info.email.blank?
       user.save
     end
-    session[:auth_id] = user.id
+    session[:id] = user.id
     redirect_to action: :index
   end
 
@@ -68,7 +68,11 @@ class FrontendController < ApplicationController
        @user.email = params[:post][:email]
        @user.is_subscribed = params[:post][:is_subscribed]
        @user.accepted_deal = params[:post][:accepted_deal]
-       redirect_to action: :index
+       @success = true if @user.save!
+    end
+    respond_to do |format|
+      format.html {redirect_to action: index}
+      format.js
     end
   end
 
@@ -82,7 +86,7 @@ class FrontendController < ApplicationController
 
   protected
   def authorise
-     @user = Auth.find(session[:auth_id]) if session[:auth_id]
+     @user = Auth.find(session[:id]) if session[:id]
   end
 
   def get_tag
@@ -97,6 +101,6 @@ class FrontendController < ApplicationController
       when 'rate'
         'likes_count DESC, id DESC'
       end
-    @tag.images.order(order_by).page(page).per 24
+    @tag.images.where(is_blocked: false).order(order_by).page(page).per 24
   end
 end

@@ -1,1 +1,4 @@
+(function(){
 $('[data-image-id="<%= @image.id %>"] .likes-counter').addClass('liked').html('<p><%= @image.likes_count %></p>');
+$('.popup > .image > .likes-counter').addClass('liked').html('<p><%= @image.likes_count %></p>');
+})()
