@@ -48,7 +48,7 @@ Twitter.search(@tag.tag).statuses.each do |status|
           provider: 'twitter',
           image_link: photo.media_url,
           post_url: photo.url,
-          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: status.user.profile_image_url),
+          auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: (status.user.profile_image_url || "/assets/nopic.png")),
           service_id: status.id,
           text: status.text
       )
