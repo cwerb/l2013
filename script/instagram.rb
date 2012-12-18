@@ -18,7 +18,7 @@ class Image < ActiveRecord::Base
   before_create {self.likes_count = 0}
   before_create {self.is_blocked = false; true}
   def self.last_instagram_id(hashtag)
-    (Image.where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : Instagram.tag_recent_media(hashtag.tag).data.first.created_time).to_i * 1000
+    (Image.where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : (Instagram.tag_recent_media(hashtag.tag).data.first.try(:created_time) || 1000)).to_i * 1000
   end
 end
 class Hashtag < ActiveRecord::Base
