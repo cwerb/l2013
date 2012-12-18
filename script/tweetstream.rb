@@ -52,6 +52,6 @@ client.on_timeline_status do |status|
 end
 
 require 'daemons'
-Daemons.daemonise
+Daemons.daemonize
 
 client.track '#' + @tag.tag
