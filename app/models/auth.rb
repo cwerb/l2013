@@ -7,5 +7,4 @@ class Auth < ActiveRecord::Base
   has_and_belongs_to_many :images, uniq: true
   validates_uniqueness_of :uid, scope: :provider
   validates_uniqueness_of :url, scope: :provider
-  validates :accepted_deal, acceptance: true, unless: Proc.new {email.blank?}
 end

@@ -55,9 +55,10 @@ class FrontendController < ApplicationController
           uid: env['omniauth.auth'].uid,
           name: env['omniauth.auth'].info.name,
           data: env['omniauth.auth'].info.to_s,
-          accepted_deal: true
       )
-      user.email = env['omniauth.auth'].info.email unless env['omniauth.auth'].info.email.blank?
+      unless env['omniauth.auth'].info.email.blank?
+        user.email = env['omniauth.auth'].info.email
+      end
       user.save
     end
     session[:id] = user.id
@@ -65,7 +66,7 @@ class FrontendController < ApplicationController
   end
 
   def final_stage
-    if params[:post]
+    if params[:post] and params[:post][:accepted_deal]
        @user.email = params[:post][:email]
        @user.is_subscribed = params[:post][:is_subscribed]
        @user.accepted_deal = params[:post][:accepted_deal]
