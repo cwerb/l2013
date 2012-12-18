@@ -1,7 +1,15 @@
 # -*- encoding : utf-8 -*-
+
+require 'daemons'
+Daemons.run_proc('instagram.rb') do
 require 'active_record'
 ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
+require 'instagram'
+Instagram.configure do |config|
+  config.client_id = "66f96c768dd64b8887d10ae2feb6d1d6"
+  config.client_secret = "1906cbd03e674cca92a4480e7bb64adb"
+end
 class Image < ActiveRecord::Base
   attr_accessible :image_link, :likes_count, :created_at, :provider, :service_id, :hashtag, :post_url, :auth, :likes_count, :text
   belongs_to :hashtag
@@ -26,11 +34,7 @@ class Auth < ActiveRecord::Base
   validates_uniqueness_of :uid, scope: :provider
   validates_uniqueness_of :url, scope: :provider
 end
-require 'instagram'
-Instagram.configure do |config|
-  config.client_id = "66f96c768dd64b8887d10ae2feb6d1d6"
-  config.client_secret = "1906cbd03e674cca92a4480e7bb64adb"
-end
+
 
 @tag = Hashtag.active
 start_time = @tag.start_time.to_i.to_s
@@ -49,8 +53,6 @@ parse = lambda { |start_id = 123456789012345|
     )
   } if answer.data.count > 0
 }
-require 'daemons'
-Daemons.run_proc('instagram.rb') do
 loop {
   parse.call
   sleep 30
