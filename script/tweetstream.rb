@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
+require 'daemons'
+Daemons.run_proc('tweetstream.rb', multiple: false) do
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
+ActiveRecord::Base.establish_connection YAML::load(File.open '/mnt/data/www/insta.liptontea.ru/config/database.yml')[ENV["RAILS_ENV"] || 'production']
 
 
 class Image < ActiveRecord::Base
@@ -51,7 +53,5 @@ client.on_timeline_status do |status|
   end
 end
 
-require 'daemons'
-Daemons.run_proc('tweetstream.rb', multiple: false) do
 client.track '#' + @tag.tag
 end
