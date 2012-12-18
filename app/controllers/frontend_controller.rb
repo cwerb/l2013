@@ -48,7 +48,8 @@ class FrontendController < ApplicationController
   end
 
   def callback
-    unless user = Auth.where(provider: env['omniauth.auth'].provider, uid: env['omniauth.auth'].uid)
+    user = Auth.where(provider: env['omniauth.auth'].provider, uid: env['omniauth.auth'].uid)
+    if user.nil?
       user = Auth.new(
           provider: env['omniauth.auth'].provider,
           uid: env['omniauth.auth'].uid,
@@ -56,7 +57,7 @@ class FrontendController < ApplicationController
           data: env['omniauth.auth'].info.to_s,
           accepted_deal: true
       )
-      user.email = env['omniauth.auth'].info.email || nil
+      user.email = env['omniauth.auth'].info.email unless env['omniauth.auth'].info.email.blank?
       user.save
     end
     session[:id] = user.id
