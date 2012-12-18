@@ -5,6 +5,7 @@ class FrontendController < ApplicationController
 
   def index
     @images = get_images((params[:order] || 'time'), (params[:page] || 1))
+    @hashtags = Hashtag.order('start_time')
   end
 
   def view
@@ -17,7 +18,7 @@ class FrontendController < ApplicationController
     if @user.images << @image
       @image.likes_count += 1
       @image.save
-    end unless @user.images.exists? @image
+    end unless @user.images.exists? @image or @image.hashtag == Hashtag.active
     respond_to do |format|
       format.html {redirect_to action: :index}
       format.js
@@ -101,6 +102,8 @@ class FrontendController < ApplicationController
       when 'rate'
         'likes_count DESC, id DESC'
       end
-    @tag.images.order(order_by).page(page).per 24
+    tag = @tag
+    tag = Hashtag.find_by_tag(params[:tag]) if params[:tag]
+    tag.images.order(order_by).page(page).per 24
   end
 end

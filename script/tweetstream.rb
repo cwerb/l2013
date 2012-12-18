@@ -81,6 +81,6 @@ Twitter.search(@tag.tag).statuses.reverse.each do |status|
   end
 end
 sleep 15
-parse.call(@tag.tag)
+parse.call
 end
 end

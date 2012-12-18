@@ -56,9 +56,9 @@
 <div class="tasks-top"></div>
 <div class="tasks">
   <ul class="task-menu">
-    <li class="task">Задание I</li>
-    <li class="task inactive">Задание II</li>
-    <li class="task inactive">Задание III</li>
+    <li class="task"><%= link_to 'Задание I', {tag: @hashtags.first.tag, order: 'time', page: 1}, remote: true %></li>
+    <li class="task <%= %(inactive) if @hashtags.second.start_time.future?%>"><%= link_to_unless @hashtags.second.start_time.future?, 'Задание II', {tag: @hashtags.second.tag, order: 'time', page: 1}, remote: true %></li>
+    <li class="task <%= %(inactive) if @hashtags.second.start_time.future?%>"><%= link_to_unless @hashtags.third.start_time.future?, 'Задание III', {tag: @hashtags.third.tag, order: 'time', page: 1}, remote: true %></li>
     <div class="lavalamp"></div>
   </ul>
   <div class="task-control">
@@ -82,7 +82,7 @@
               там готовят блюда из Дала и приносят их в дар богам.</p>
 
             <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
-              #ЛИПТОНВКУСНЯШКИ</b></p>
+              #<%= @hashtags.first.tag.upcase %></b></p>
           </div>
           <div class="social">
             <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
@@ -93,7 +93,7 @@
             <div class="time-left">
               <p>До конца задания осталось:</p>
 
-              <div class="timeout">2 дня</div>
+              <div class="timeout"><%= time_remaining %></div>
             </div>
           </div>
         </div>

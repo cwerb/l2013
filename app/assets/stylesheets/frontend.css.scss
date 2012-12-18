@@ -183,6 +183,10 @@ body {
           color: #967b4b;
           cursor: default;
         }
+        a {
+          color: #976000;
+          text-decoration: none;
+        }
       }
       .lavalamp {
         background: url("lavalamp.png") no-repeat scroll 0 0 transparent;
@@ -315,10 +319,6 @@ body {
                   font-size: 14px;
                   text-align: center;
                   background: url("timeout_background.png");
-                  &:first-letter {
-                    font-weight: bold;
-                    font-size: 120%;
-                  }
                 }
               }
             }

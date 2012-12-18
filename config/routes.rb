@@ -8,6 +8,7 @@ L2013::Application.routes.draw do
   root to: 'frontend#index'
 
   match 'images/:order/:page', to: 'frontend#index'
+  match 'images/:tag/:order/:page', to: 'frontend#index'
 
   match "profile", to: 'frontend#view'
 
