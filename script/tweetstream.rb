@@ -37,10 +37,9 @@ Twitter.configure do |config|
   config.oauth_token_secret = "ub5jAiGiLGbdHelSViPvhSy0DDtrJ4z1T5FhxQPYw0"
 end
 
-@tag = Hashtag.active
-
 
 loop do
+@tag = Hashtag.active
 Twitter.search(@tag.tag).statuses.reverse.each do |status|
   if status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?
     puts status.text

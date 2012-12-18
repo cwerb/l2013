@@ -2,7 +2,11 @@
     <div class="image-holder-holder" data-image-id="<%= post.id %>">
       <div class="image-holder">
         <div class="likes-counter <%= 'liked' if (@user.images.exists? post if @user) %>">
-          <%= (@user && ! @user.images.exists?(post)) ? (link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id}, remote: true) : raw(%(<p>#{post.likes_count}</p>))  %>
+          <% if @user %>
+              <%= link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id}, remote: true  %>
+          <% else %>
+              <%= link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id} %>
+          <% end %>
         </div>
         <div class="image-cropper"> <%= link_to image_tag(post.image_link, class: 'popupopener'), {action: :post, id: post.id}, remote: true -%></div>
         <div class="image-data"><%= image_tag post.auth.avatar_url, class: :avatar %>
