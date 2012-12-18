@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
   before_create {self.likes_count = 0}
   before_create {self.is_blocked = false; true}
   def self.last_instagram_id(hashtag)
-    (Image.where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : (Instagram.tag_recent_media(hashtag.tag).data.first.try(:created_time) || 1000)).to_i * 1000
+    (Image.where(provider: 'instagram', hashtag_id: hashtag).count > 0 ? Image.select(:service_id).where(provider: 'instagram').last.service_id : (Instagram.tag_recent_media(hashtag.tag).data.first.try(:created_at) || 1000)).to_i * 1000
   end
   validates :post_url, uniqueness: true
   validates :image_link, uniqueness: true
@@ -49,7 +49,7 @@ end
 parse = lambda { |start_id = 123456789012345|
   answer = Instagram.tag_recent_media(@tag.tag, max_tag_id: start_id, min_tag_id: Image.last_instagram_id(@tag))
   parse.call(answer.pagination.next_max_tag_id.to_i) if answer.pagination.next_max_tag_id.to_i > Image.last_instagram_id(@tag) and answer.data.last.created_time > start_time
-  answer.data.reverse.each { |status|
+  answer.data.each { |status|
     @tag.images.create(
         provider: 'instagram',
         image_link: status.images.standard_resolution.url,
@@ -66,7 +66,7 @@ parse = lambda { |start_id = 123456789012345|
 loop do
 @tag = Hashtag.active
 start_time = @tag.start_time.to_i.to_s
-Twitter.search(@tag.tag).statuses.reverse.each do |status|
+Twitter.search(@tag.tag).statuses.each do |status|
   if status.hashtags.any?{|h| h[:text].downcase == @tag.tag} and !status.retweet?
     puts status.text
     status.media.each do |photo|
@@ -77,7 +77,7 @@ Twitter.search(@tag.tag).statuses.reverse.each do |status|
           auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: (status.user.profile_image_url.blank? ? status.user.profile_image_url : "/assets/nopic.png")),
           service_id: status.id,
           text: status.text,
-          service_time: photo.created_at
+          service_time: status.created_at
       )
     end
   end
