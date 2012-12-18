@@ -11,7 +11,7 @@
         <% if @user and not @user.images.exists? post %>
             <div class="button"><%= link_to 'Лайк!', {action: :like, photo_id: post.id}, remote: true %></div>
         <% else %>
-            <div class="button liked"> <%= %(#{post.likes_count} #{Russian.p(post.likes_count, "лайк", "лайка", "лайков")}) %> </div>
+            <div class="button liked"> <%= link_to_unless @user, %(#{post.likes_count} #{Russian.p(post.likes_count, "лайк", "лайка", "лайков")}), action: :about %> </div>
         <% end %>
       </div>
       <div class="social">
@@ -31,6 +31,6 @@
     </div>
   </div>
   <div class="text" style="background-image: url('<%= %(/assets/#{post.provider}.png) %>');">
-    <p>Описание в две строкиОписание в две строкиОписание в две строкиОписание в две строкиОписание в две строки</p>
+    <p><%= post.text %></p>
   </div>
 </div>

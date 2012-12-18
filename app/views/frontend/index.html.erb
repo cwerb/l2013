@@ -1,5 +1,5 @@
 <% if !@user %>
-    <div class="auth-block">
+    <div class="auth-block" xmlns="http://www.w3.org/1999/html">
       <button class="w-control-close"></button>
       <p class="title">Войти через:</p>
 
@@ -17,50 +17,27 @@
     </div>
 <% elsif @user.email.blank? %>
     <div class="auth-block">
-      <p class="title">Войти через:</p>
 
-      <div class="buttons">
-        <p class="with-notice"><a href="/auth/facebook" class="w-button facebook"><span>Facebook</span></a>
-
-          <span class="facebook-notice">Залогинившись через Facebook, ты сможешь только голосовать</span>
-        </p>
-        <p><a href="/auth/twitter" class="w-button twitter"><span>Twitter</span></a></p>
-
-        <p><a href="/auth/instagram" class="w-button instagram"><span>Instagram</span></a></p>
-      </div>
-      <p class="note">Авторизуйся, чтобы выигрывать призы <br>
-        и голосовать за фотографии</p>
+      <p class="title">Оставьте e-mail<br /> для получения призов</p>
+      <%= form_for @user, as: :post, url:{action: :final_stage}, html: {class: 'form-horizontal'} do |f| -%>
+          <div class="control-group">
+            <%= f.text_field :email, placeholder: 'email' -%>
+          </div>
+          <div class="control-group text">
+            <%= f.check_box :is_subscribed -%> <span class="checkbox selection"></span>я хочу узнавать о новых конкурсах Липтон
+          </div>
+          <div class="control-group text">
+            <%= f.check_box :accepted_deal -%> <span class="checkbox selection"></span>я согласен с <%= link_to 'правилами конкурса', action: :rules -%>
+          </div>
+          <div class="control-group">
+            <%= f.submit 'ОК', class: 'butn' -%>
+          </div>
     </div>
+      <%- end -%>
 <% end %>
 
 <div class="ad-carousel">
   <div class="carousel-content">
-    <div class="carousel-block">
-      <div class="content">
-        <div class="image">
-          <%= image_tag "instagram_logo_camera.png" %>
-        </div>
-        <div class="text">
-          <h3>Lipton в Instagram</h3>
-
-          <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
-          <a href="instagram://user?username-lipton"></a>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-block">
-      <div class="content">
-        <div class="image">
-          <%= image_tag "instagram_logo_camera.png" %>
-        </div>
-        <div class="text">
-          <h3>Lipton в Instagram</h3>
-
-          <p>Следи за Lipton в Instagram, чтобы быстрее всех получить новость о новом задании</p>
-          <a href="instagram://user?username-lipton"></a>
-        </div>
-      </div>
-    </div>
     <div class="carousel-block">
       <div class="content">
         <div class="image">
@@ -108,55 +85,7 @@
               #ЛИПТОНВКУСНЯШКИ</b></p>
           </div>
           <div class="social">
-            <a href="instagram://camera">Загрузить фото</a>
-
-            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
-              вручную</p>
-
-            <div class="time-left">
-              <p>До конца задания осталось:</p>
-
-              <div class="timeout">2 дня</div>
-            </div>
-          </div>
-        </div>
-        <div class="task">
-          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
-          <div class="task-block">
-            <h3>lipton solid assam</h3>
-
-            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
-              там готовят блюда из Дала и приносят их в дар богам.</p>
-
-            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
-              #ЛИПТОНВКУСНЯШКИ</b></p>
-          </div>
-          <div class="social">
-            <a href="instagram://camera">Загрузить фото</a>
-
-            <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
-              вручную</p>
-
-            <div class="time-left">
-              <p>До конца задания осталось:</p>
-
-              <div class="timeout">2 дня</div>
-            </div>
-          </div>
-        </div>
-        <div class="task">
-          <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
-          <div class="task-block">
-            <h3>lipton solid assam</h3>
-
-            <p>Вкус <b>Lipton Solid Assam</b> переносит нас в экзотическую провинцию Ассам. Традиционно, на Новый Год
-              там готовят блюда из Дала и приносят их в дар богам.</p>
-
-            <p><b>А какое блюдо вы принесете в дар своим близким? Сфотографируйте его и поставьте хештег
-              #ЛИПТОНВКУСНЯШКИ</b></p>
-          </div>
-          <div class="social">
-            <a href="instagram://camera">Загрузить фото</a>
+            <%= @user ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
 
             <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
               вручную</p>

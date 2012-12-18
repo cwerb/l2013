@@ -39,6 +39,9 @@ class FrontendController < ApplicationController
   def gifts
   end
 
+  def lipton
+  end
+
   def login
     session[:auth_id] = nil
     redirect_to '/'
@@ -80,7 +83,6 @@ class FrontendController < ApplicationController
   protected
   def authorise
      @user = Auth.find(session[:auth_id]) if session[:auth_id]
-     redirect_to(action: 'final_stage') if params[:action] != 'final_stage' && !@user.nil? && @user.email.blank?
   end
 
   def get_tag

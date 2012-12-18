@@ -4,4 +4,5 @@
     p = $('.overlay > .popup').position();
     $('.overlay > .popup').css('position', 'absolute');
     $('.overlay > .popup').css('top', p.top+'px');
+    $('.background').on('click', function() {$('.overlay').html('');});
 })()

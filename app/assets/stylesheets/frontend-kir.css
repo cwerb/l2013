@@ -268,8 +268,8 @@ p.with-notice a:hover ~ .facebook-notice {
     margin-left: -435px;
     top: 5px;
 
-    opacity: 0;
-    filter: alpha(opacity=0);
+    opacity: 1;
+    filter: alpha(opacity=1);
 }
 .auth-block .note {
     font-family: 'PT Sans',sans-serif;
@@ -601,5 +601,4 @@ div.txtBlock p {
     display: none;
 }
 /** î êîíêóðñå } **/
-
 

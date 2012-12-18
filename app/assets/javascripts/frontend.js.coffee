@@ -24,6 +24,10 @@ $(document).ready  ->
   $(".auth-block .w-control-close").click ->
     $(".auth-block").hide();
 
-  $('.background').on('click', ()->
-    $('.overlay').html('')
-  )
+  $('.checkbox').click ->
+    if $(this).hasClass 'selection'
+      $(this).removeClass 'selection'
+      $(this).parent().find('input[type="checkbox"]').attr('checked', false)
+    else
+      $(this).addClass 'selection'
+      $(this).parent().find('input[type="checkbox"]').attr('checked', true)

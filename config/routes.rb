@@ -9,7 +9,7 @@ L2013::Application.routes.draw do
 
   match 'images/:order/:page', to: 'frontend#index'
 
-  match "lookwhativedone", to: 'frontend#view'
+  match "ohitsyou", to: 'frontend#view'
 
   match "lookwhativedone/:order/:page", to: 'frontend#view'
 
@@ -18,6 +18,7 @@ L2013::Application.routes.draw do
   match "obey", to: 'frontend#rules'
   match "about", to: 'frontend#about'
   match "gifts", to: 'frontend#gifts'
+  match "lipton", to: 'frontend#lipton'
 
   match 'like/:photo_id', to: 'frontend#like'
 
