@@ -101,6 +101,6 @@ class FrontendController < ApplicationController
       when 'rate'
         'likes_count DESC, id DESC'
       end
-    @tag.images.where(is_blocked: false).order(order_by).page(page).per 24
+    @tag.images.order(order_by).page(page).per 24
   end
 end
