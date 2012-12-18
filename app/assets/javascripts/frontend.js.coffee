@@ -20,9 +20,12 @@ $(document).ready  ->
   $(window).on('scroll', ->
     check_height()
   )
-
-  $('ul.task-menu > li').click(->
+  $('ul.task-menu > li a').click (e)->
+    e.preventDefault()
+  $('ul.task-menu > li').click((e)->
+    e.preventDefault()
     unless $(this).hasClass('inactive')
+      $.getScript($(this).children().first().attr('href')+'.js')
       $('.lavalamp').css('left', ( $(this).position().left - $('ul.task-menu > li').first().position().left + 2))
       $('.tasks-carousel-content').css('left', '-'+$('ul.task-menu > li').index($(this))+'00%')
   )
