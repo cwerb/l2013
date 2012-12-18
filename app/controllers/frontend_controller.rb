@@ -9,6 +9,7 @@ class FrontendController < ApplicationController
 
   def view
     @images = @user.own_images if @user
+    redirect_to '/' if @user.provider == 'facebook'
   end
 
   def like
