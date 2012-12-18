@@ -66,7 +66,7 @@ class FrontendController < ApplicationController
   end
 
   def final_stage
-    if params[:post] and params[:post][:accepted_deal]
+    if params[:post]
        @user.email = params[:post][:email]
        @user.is_subscribed = params[:post][:is_subscribed]
        @user.accepted_deal = params[:post][:accepted_deal]
