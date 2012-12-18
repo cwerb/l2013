@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
+ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'development']
 
 class Image < ActiveRecord::Base
   attr_accessible :image_link, :likes_count, :created_at, :provider, :service_id, :hashtag, :post_url, :auth, :likes_count, :text
@@ -44,7 +44,8 @@ parse = lambda { |start_id = 123456789012345|
         image_link: status.images.standard_resolution.url,
         post_url: status.link,
         auth: Auth.find_by_uid(status.user.id) || Auth.create(uid: status.user.id, name: status.user.screen_name || status.user.username, url: %(http://instagram.com/#{status.user.username}), provider: "instagram", avatar_url: status.user.profile_picture),
-        service_id: status.created_time.to_i
+        service_id: status.created_time.to_i,
+        text: status.text
     )
   } if answer.data.count > 0
 }

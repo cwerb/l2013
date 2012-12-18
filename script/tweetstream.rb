@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'active_record'
-ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'production']
+ActiveRecord::Base.establish_connection YAML::load(File.open 'config/database.yml')[ENV["RAILS_ENV"] || 'development']
 
 
 class Image < ActiveRecord::Base
@@ -44,7 +44,8 @@ client.on_timeline_status do |status|
           image_link: photo.media_url,
           post_url: photo.url,
           auth: Auth.find_by_uid(status.user.id.to_s) || Auth.create(uid: status.user.id.to_s, name: status.user.name, url: %(http://twitter.com/#{status.user.screen_name}), provider: "twitter", avatar_url: status.user.profile_image_url),
-          service_id: status.id
+          service_id: status.id,
+          text: status.text
       )
     end
   end
