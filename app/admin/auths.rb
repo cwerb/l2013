@@ -8,6 +8,7 @@ ActiveAdmin.register Auth do
   filter :email
   index title: "Авторизованные пользователи" do
     column :provider
+    column :email
     column :name
     column :url
   end
