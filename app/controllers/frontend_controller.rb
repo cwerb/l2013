@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class FrontendController < ApplicationController
-  before_filter :authorise
+  before_filter :authorise, except: [:login]
   before_filter :get_tag, only: [:index, :rating]
 
   def index
