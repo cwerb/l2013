@@ -1,8 +1,53 @@
 (function(){
+    var prev_scroll = self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);  
     $('.overlay').html('<div class="background"><a href></a></div><%= escape_javascript render partial: 'post', object: @popup %>');
+    
     $('.overlay > .popup').css('display', 'block');
     p = $('.overlay > .popup').position();
     $('.overlay > .popup').css('position', 'absolute');
     $('.overlay > .popup').css('top', p.top+'px');
-    $('.background').on('click', function() {$('.background').off('click');$('.overlay').html('');});
+    
+    $('.background').off('click').on('click', function() {
+		$('.background').off('click');
+		$('.overlay').html('');
+		$('.wrapper').attr('style','');
+		window.scrollTo(0,prev_scroll);
+		$('.spacer').show();
+	});
+	
+	$('.wrapper').css({
+		marginTop: -$('.background').offset().top+$('.spacer').height(),
+		height: $('.background').innerHeight()+$('.background').offset().top+19,
+		overflow : 'hidden'
+	});
+	$('.overlay .popup').css({
+		'top' : 0,
+		marginTop: 50
+	});
+	$('.spacer').hide();
+	window.scrollTo(0,0);
+	
+	// share
+	$('.popup .info .activity .social .button')
+	.off('click').on('click', function()
+	{
+		setTimeout(function()
+		{
+			var $P = $('.popup .info .activity .social .share');
+			if ( $P.hasClass('opened') )
+				$P.hide().removeClass('opened');
+			else
+				$P.show().addClass('opened');
+		},10);
+	});
+	
+	$('body').off('click.popup').on('click.popup', function(e)
+	{
+		var $P = $('.popup .info .activity .social .share');
+		if ( $P.hasClass('opened') )
+		{
+			if ( $(e.target).closest('.share').length == 0 )
+				$P.hide().removeClass('opened');
+		}
+	});
 })()
