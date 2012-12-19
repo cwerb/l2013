@@ -4,6 +4,17 @@
 
 $(document).ready  ->
 
+  if $('.overlay > .popup').length > 0
+    $('.overlay').prepend('<div class="background"><a href></a></div>')
+    $('.overlay > .popup').css('display', 'block')
+    p = $('.overlay > .popup').position()
+    $('.overlay > .popup').css('position', 'absolute')
+    $('.overlay > .popup').css('top', p.top+'px')
+    $('.background').on('click', ->
+      $('.background').off('click')
+      $('.overlay').html('')
+    )
+
   check_height = -> $('.next-page-link').click() if 400 > ($(document).height()-$(window).height()-$(document).scrollTop())
 
   $('.login-button').click((e)->
@@ -46,6 +57,16 @@ $(document).ready  ->
     $('.auth-block').css('display', 'block')
   )
 
+  $(document).on 'ajax:complete', ->
+    $('a.wannalikebutcant').click((e)->
+      e.preventDefault()
+      $('.overlay').html('')
+      $('.overlay').animate({opacity: 0}, 800)
+      $('.auth-block').css('display', 'block')
+      $('body, html').animate({scrollTop: 0}, 800)
+    )
+
+
   set_size = ( elem, w_const, h_const ) ->
     if  typeof h_const == 'undefined'
       h_const = w_const
@@ -60,14 +81,12 @@ $(document).ready  ->
     if h_ < h_const
       h_ = h_const
       w_ = h_/k
-
     elem.css({
-    position : 'absolute',
-    width: w_,
-    height: h_,
-    margin: (h_const-h_) / 2 + 'px 0 0 ' + (w_const-w_) / 2 + 'px'
+      position : 'absolute',
+      width: w_,
+      height: h_,
+      margin: (h_const-h_) / 2 + 'px 0 0 ' + (w_const-w_) / 2 + 'px'
     })
-
   $('body').bind 'image_feed_refresh', ->
     $('.main-content .image-holder .popupopener:not(.resized)').each ->
       $(this).css({'width' : 'auto', 'max-width' : 'auto'}).addClass('resized')
