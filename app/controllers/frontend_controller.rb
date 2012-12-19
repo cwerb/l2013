@@ -104,6 +104,6 @@ class FrontendController < ApplicationController
       end
     tag = @tag
     tag = Hashtag.find_by_tag(params[:tag]) if params[:tag]
-    tag.images.order(order_by).page(page).per 24
+    tag.images.where(is_blocked: false).order(order_by).page(page).per 24
   end
 end
