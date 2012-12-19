@@ -3,7 +3,6 @@ L2013::Application.routes.draw do
   get 'instagram/callback'
   post 'instagram/callback'
 
-  get '/popup/:id', to: 'frontend#post'
 
   root to: 'frontend#index'
 
@@ -34,6 +33,8 @@ L2013::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  get '/:id', to: 'frontend#post'
 
   match '*path' => redirect('/') unless Rails.env.development?
 

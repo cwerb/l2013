@@ -1,5 +1,5 @@
 (function(){
-    $('.overlay').html('<div class="background"><a href></a></div><%= escape_javascript render partial: 'post', object: @post %>');
+    $('.overlay').html('<div class="background"><a href></a></div><%= escape_javascript render partial: 'post', object: @popup %>');
     $('.overlay > .popup').css('display', 'block');
     p = $('.overlay > .popup').position();
     $('.overlay > .popup').css('position', 'absolute');

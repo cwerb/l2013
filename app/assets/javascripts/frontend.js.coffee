@@ -4,6 +4,17 @@
 
 $(document).ready  ->
 
+  if $('.overlay > .popup').length > 0
+    $('.overlay').prepend('<div class="background"><a href></a></div>')
+    $('.overlay > .popup').css('display', 'block')
+    p = $('.overlay > .popup').position()
+    $('.overlay > .popup').css('position', 'absolute')
+    $('.overlay > .popup').css('top', p.top+'px')
+    $('.background').on('click', ->
+      $('.background').off('click')
+      $('.overlay').html('')
+    )
+
   check_height = -> $('.next-page-link').click() if 400 > ($(document).height()-$(window).height()-$(document).scrollTop())
 
   $('.login-button').click((e)->

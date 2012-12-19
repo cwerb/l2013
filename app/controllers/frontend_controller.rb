@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class FrontendController < ApplicationController
   before_filter :authorise, except: [:login]
-  before_filter :get_tag, only: [:index, :rating]
+  before_filter :get_tag, only: [:index, :rating, :post]
 
   def index
     @images = get_images((params[:order] || 'time'), (params[:page] || 1))
@@ -26,8 +26,11 @@ class FrontendController < ApplicationController
   end
 
   def post
-    @post = Image.find_by_id(params[:id])
+    @popup = Image.find_by_id(params[:id])
+    @images = get_images((params[:order] || 'time'), (params[:page] || 1))
+    @hashtags = Hashtag.order('start_time')
     respond_to do |format|
+      format.html {render action: :index}
       format.js
     end
   end
