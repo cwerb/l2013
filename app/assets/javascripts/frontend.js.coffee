@@ -82,10 +82,10 @@ $(document).ready  ->
       h_ = h_const
       w_ = h_/k
     elem.css({
-      position : 'absolute',
-      width: w_,
-      height: h_,
-      margin: (h_const-h_) / 2 + 'px 0 0 ' + (w_const-w_) / 2 + 'px'
+    position : 'absolute',
+    width: w_,
+    height: h_,
+    margin: (h_const-h_) / 2 + 'px 0 0 ' + (w_const-w_) / 2 + 'px'
     })
   $('body').bind 'image_feed_refresh', ->
     $('.main-content .image-holder .popupopener:not(.resized)').each ->
