@@ -40,3 +40,8 @@ $(document).ready  ->
     else
       $(this).addClass 'selection'
       $(this).parent().find('input[type="checkbox"]').attr('checked', true)
+
+  $('a.participate').click((e)->
+    e.preventDefault()
+    $('.auth-block').css('display', 'block')
+  )

@@ -5,7 +5,7 @@
           <% if @user %>
               <%= link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id}, remote: true  %>
           <% else %>
-              <%= link_to raw(%(<p>#{post.likes_count}</p>)), {action: :like, photo_id: post.id} %>
+              <%=         raw(%(<p>#{post.likes_count}</p>)) %>
           <% end %>
         </div>
         <div class="image-cropper"> <%= link_to image_tag(post.image_link, class: 'popupopener'), {action: :post, id: post.id}, remote: true -%></div>

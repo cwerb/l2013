@@ -1,5 +1,5 @@
 <% if @user.nil? %>
-    <div class="auth-block" xmlns="http://www.w3.org/1999/html">
+    <div class="auth-block" style="display: none;">
       <button class="w-control-close"></button>
       <p class="title">Войти через:</p>
 
@@ -72,7 +72,7 @@
   </div>
   <div class="tasks-carousel-holder">
     <div class="tasks-carousel">
-      <div class="tasks-carousel-content" style="left: -<%= @hashtags.find_index(@tag) %>00%">>
+      <div class="tasks-carousel-content" style="left: -<%= @hashtags.find_index(@tag) %>00%">
         <div class="task">
           <div class="image"> <%= image_tag 'sample-task-pic.png' %> </div>
           <div class="task-block">
@@ -85,7 +85,7 @@
               #<%= @hashtags.first.tag.upcase %></b></p>
           </div>
           <div class="social">
-            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
+            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', {action: :about}, class: 'participate')  %>
 
             <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
               вручную</p>
@@ -110,7 +110,7 @@
               #<%= @hashtags.second.tag.upcase %></b></p>
           </div>
           <div class="social">
-            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
+            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', {action: :about}, class: 'participate')  %>
 
             <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
               вручную</p>
@@ -135,7 +135,7 @@
               #<%= @hashtags.third.tag.upcase %></b></p>
           </div>
           <div class="social">
-            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', action: :about)  %>
+            <%= (@user and @user.provider != 'facebook') ? link_to('Мои фото', action: :view) : link_to('Участвовать', {action: :about}, class: 'participate')  %>
 
             <p class="alternatives">Или добавьте фотографию в свой твиттер или инстаграм, с хэштегом задания,
               вручную</p>
