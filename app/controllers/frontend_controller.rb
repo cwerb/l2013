@@ -69,7 +69,7 @@ class FrontendController < ApplicationController
        @user.email = params[:post][:email]
        @user.is_subscribed = params[:post][:is_subscribed]
        @user.accepted_deal = params[:post][:accepted_deal]
-       @success = true if @user.save!
+       @user.save
     end
     respond_to do |format|
       format.html {redirect_to action: index}

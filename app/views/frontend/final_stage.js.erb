@@ -1,3 +1,12 @@
-<% if @success %>
+<% if !@user.errors.messages.any? %>
 $('.auth-block').css('display', 'none')
+<% else %>
+$('input#post_email').css('box-shadow', 'red 0 0 0px')
+$('.acceptance').css('color', 'black')
+<% if @user.errors.messages[:email] %>
+$('input#post_email').css('box-shadow', 'red 0 0 20px')
+<% end %>
+<% if @user.errors.messages[:accepted_deal] %>
+$('.acceptance').css('color', 'red')
+<% end %>
 <% end %>
