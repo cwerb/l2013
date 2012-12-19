@@ -18,7 +18,7 @@ class FrontendController < ApplicationController
     if @user.images << @image
       @image.likes_count += 1
       @image.save
-    end unless @user.images.exists? @image or @image.hashtag == Hashtag.active
+    end unless @user.images.exists? @image or @image.hashtag != Hashtag.active
     respond_to do |format|
       format.html {redirect_to action: :index}
       format.js

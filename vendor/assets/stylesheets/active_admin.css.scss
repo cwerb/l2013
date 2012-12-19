@@ -44,6 +44,7 @@
 }
 ul.thumbnails {
   display: inline;
+  overflow: hidden;
   li {
     position: relative;
     display: inline-block;
@@ -52,16 +53,21 @@ ul.thumbnails {
     height: 160px;
     overflow: hidden;
     padding: 10px;
+    vertical-align: bottom;
     img {
       width: 150px;
     }
     .top-image-likes-count {
+      background: rgba(0,0,0,0.7);
+      border-radius: 5px;
+      min-width: 30px;
+      text-align: center;
       position: absolute;
       right: 10px;
       top: 10px;
       color: white;
       font-weight: bolder;
-      font-size: 36px;
+      font-size: 24px;
     }
   }
 }
