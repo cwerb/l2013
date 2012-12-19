@@ -87,3 +87,23 @@ $(document).ready  ->
       height: h_,
       margin: (h_const-h_) / 2 + 'px 0 0 ' + (w_const-w_) / 2 + 'px'
     })
+  $('body').bind 'image_feed_refresh', ->
+    $('.main-content .image-holder .popupopener:not(.resized)').each ->
+      $(this).css({'width' : 'auto', 'max-width' : 'auto'}).addClass('resized')
+      if  $(this).height() > 100
+        set_size $(this), 221, 221
+      else
+        $(this).load -> set_size( $(this), 221, 221 )
+
+
+  $(document).on 'ajax:complete', ->
+    $('a.wannalikebutcant').click (e)->
+      e.preventDefault()
+      $('.overlay').html('')
+      $('.overlay').animate({opacity: 0}, 800)
+      $('.auth-block').css('display', 'block')
+      $('body, html').animate({scrollTop: 0}, 800)
+      $('body').trigger('image_feed_refresh')
+
+
+  $('body').trigger('image_feed_refresh')
