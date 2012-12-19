@@ -8,10 +8,10 @@
     </div>
     <div class="activity">
       <div class="like">
-        <% if @user and not @user.images.exists? post %>
-            <div class="button"><%= link_to 'Лайк!', {action: :like, photo_id: post.id}, remote: true %></div>
+        <% if @user %>
+            <div class="button<%= ' liked' if @user.images.exists? post %>"><%= link_to 'Лайк!', {action: :like, photo_id: post.id}, remote: true %></div>
         <% else %>
-            <div class="button liked"> <%= link_to_unless @user, %(#{post.likes_count} #{Russian.p(post.likes_count, "лайк", "лайка", "лайков")}), action: :about %> </div>
+            <div class="button"> <%= link_to 'Лайк!', '#', {class: 'wannalikebutcant'} %> </div>
         <% end %>
       </div>
       <div class="social">

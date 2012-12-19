@@ -45,3 +45,12 @@ $(document).ready  ->
     e.preventDefault()
     $('.auth-block').css('display', 'block')
   )
+
+  $(document).on 'ajax:complete', ->
+    $('a.wannalikebutcant').click((e)->
+      e.preventDefault()
+      $('.overlay').html('')
+      $('.overlay').animate({opacity: 0}, 800)
+      $('.auth-block').css('display', 'block')
+      $('body, html').animate({scrollTop: 0}, 800)
+    )
